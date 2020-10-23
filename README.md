@@ -1,2 +1,2 @@
-# The-Godhunter
-The Godhunter is a mod for Terraria using tModLoader
+# The Gods Hunter
+I sometimes update this mod
