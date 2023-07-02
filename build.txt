@@ -1,0 +1,10 @@
+author = Eskimo241
+version = 0.0.4.1
+displayName = The Godhunter
+hideResources = false
+includeSource = true
+hideCode = false
+includePDB = true
+modReferences = MultiHitboxNPCLibrary
+
+buildIgnore = obj\*, bin\*, .vs\*, .git\*, BuildIgnore\*

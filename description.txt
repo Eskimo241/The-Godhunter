@@ -1,0 +1,14 @@
+A little mod for now, in the not so near future there will be story and cool bosses
+(It is missing a lot of textures, for the moment nothing I draw satisfy me)
+You may expect an update soon just for the textures
+
+Changelog:
+
+-Finally ported the mod to 1.4
+-Coded back ZWE from scratch (lots of blanck textures for BossChecklist)
+
+
+
+you can contact me with discord: Eskimo#7778
+
+

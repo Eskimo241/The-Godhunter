@@ -1,0 +1,3 @@
+Phase 1: Boss  come from the right and fly over to the left, doesn't attack yet. imposing music
+Phase 2: Boss hp*0.98, shed to reveal its armored plate and rainbow skin, more boss music, pretty easy phase
+Phase 3: Boss hp*0.5, shed once again removing its armored plate, take more damage, but very quick and deadly attacks

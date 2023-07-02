@@ -1,0 +1,43 @@
+DONE| Refaire texture de Jeanne d'Arc et Perceval, elles sont dégelasse (ELLES SONT IMMONDE PUTAIN, C'EST PAS SYMETRIQUE, CA N'A AUCUN SENS CTE MERDE!!)
+
+DONE| Texture WaterBoltMinion
+
+DONE| insérer son au projectile du minion 
+
+DONE| Texture WaterBoltMinionP
+
+DONE| Trouver icon
+
+WIP | Faire Icon
+
+DONE| Texture "ChangelogBag" type blanc
+
+Retexture Sharkannon
+
+Retexture Extinction (kinda shit tbh)
+
+World Writers Armor:
+- NONE| Texture
+- WIP | Effects
+- WIP | Actual goods effects with cycling
+
+
+See if changing moon/sun on menu possible (weirdly but doable, have to write the sun code itself tho...)
+(Let's not do that) Menu BG change every time (random? or cycle?) :
+    Chaos Giant
+    ZWE moving in the background, and slowly getting closer and at the end "break" the screen
+
+
+Chaos ideas:
+    Phase where he is giant in the background, only hands are in foreground (cf, Twilight mod Library of Ruina)
+
+
+Spear melee to throwable function
+1 Uses craftable throwable spear that act like Skyfury (hit the ennemy and spawns stars)
+
+
+
+Heroic Damage Class (damn I had forgotten about that, that some good shit):
+overall stronger (for "story")
+Gauge raises while in combat and can be released once full for [Unknown] buffs
+

@@ -1,0 +1,48 @@
+﻿Mods: {
+	"TheGodhunter": {
+		"ItemName": {
+			//Armor
+
+
+			"GodsHunterHelmet" : "World Writer's Helmet",
+			"GodsHunterBreastplate" : "World Writer's Breastplate",
+			"GodsHunterLeggings" : "World Writer's Leggings",
+
+			//Weapons
+			//BossSummons
+			"AstralGem" : "AstralGem"
+		},
+		"ItemTooltip": {
+
+
+			"GodsHunterHelmet" : "You are wearing the head of the Chaotic Entity, who would do that?",
+			"GodsHunterBreastplate" : "The torso of a deity-like entity, lighter than it looks",
+			"GodsHunterLeggings" : "The legs of the stongest opponent you have met so far, hoping to never see such a monstrosity again",
+
+			//BossSummons
+			"AstralGem" : "Summon the Zara's world Destroyer",
+
+			//Micelaneous
+			"DevTablette" : "Tooltip1"
+		},
+		"ArmorSetBonus": {
+			"GodsHunterHelmet0" : "Your worst nighmare...",
+			"GodsHunterHelmet1" : "Your Best nighmare..."
+
+		}
+		"NPCName":{
+			"ZWE": "Zara's World Eater"
+		}
+		"NPCMessages":{
+			"ZWE1": "Phase 2...",
+			"ZWE2": "Phase 3..."
+		}
+		"BossChecklist":{
+			"ZWE":{
+				"SpawnInfo" : "ZWE SpawnInfo",
+				"DespawnMessage" : "ZWE DespawnMessage"
+			}
+		}
+	}
+}
+

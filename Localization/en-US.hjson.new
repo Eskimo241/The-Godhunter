@@ -1,0 +1,152 @@
+
+Mods: {
+	TheGodhunter: {
+		Items: {
+			GodsHunterHelmet: {
+				//Armor
+
+
+				DisplayName: World Writer's Helmet
+				Tooltip: You are wearing the head of the Chaotic Entity, who would do that?
+			}
+
+			GodsHunterBreastplate: {
+				DisplayName: World Writer's Breastplate
+				Tooltip: The torso of a deity-like entity, lighter than it looks
+			}
+
+			GodsHunterLeggings: {
+				DisplayName: World Writer's Leggings
+				Tooltip: The legs of the stongest opponent you have met so far, hoping to never see such a monstrosity again
+			}
+
+			AstralGem: {
+				//Weapons
+			//BossSummons
+				DisplayName: AstralGem
+				//BossSummons
+				Tooltip: Summon the Zara's world Destroyer
+			}
+
+			BombFishRocket: {
+				DisplayName: "Bomb Fish Ammunition "
+				Tooltip:
+					'''
+					Ammo used as rocket
+					Be careful it explode
+					'''
+			}
+
+			ChangelogBag: {
+				DisplayName: Changelog Bag
+				Tooltip:
+					'''
+					{$CommonItemTooltip.RightClickToOpen}
+					Some items are in development like the armor set 
+					'''
+			}
+
+			EmptyEnchentementRune.DisplayName: Empty Rune
+			KingsCrown.DisplayName: King's crown
+			Astralite.DisplayName: Astralite
+			AstraliteIngot.DisplayName: Astralite Bar
+
+			ERrROr: {
+				DisplayName: ERrROr
+				Tooltip: that's what it is
+			}
+
+			GodsPearl.DisplayName: God's Pearl
+
+			GoldKing: {
+				DisplayName: Gold King
+				Tooltip: Currently useless
+			}
+
+			GoldKingIngot.DisplayName: Gold King Bar
+
+			PlatinumQueen: {
+				DisplayName: Platinum Queen
+				Tooltip: Currently useless
+			}
+
+			PlatinumQueenIngot.DisplayName: Platinum Queen Bar
+
+			AlrosGS: {
+				DisplayName: Alros Great Sword
+				Tooltip: Work In Progress
+			}
+
+			AzesClaw.DisplayName: Aze's Claw
+			DemonicSword.DisplayName: Demonic Sword
+
+			Extinction: {
+				DisplayName: Extinction
+				Tooltip: The extinction of life
+			}
+
+			Jeannedarc: {
+				DisplayName: Jeanne D'arc
+				Tooltip: It's a small spear but she deal a lot of damage
+			}
+
+			KingsCleaver.DisplayName: King's cleaver
+
+			Perceval: {
+				DisplayName: Perceval
+				Tooltip: It's a small spear but she deal a lot of damage
+			}
+
+			Sharkanon: {
+				DisplayName: Sharkanon
+				Tooltip: Shoot bomb fishes, powerfull and dangerous
+			}
+
+			TheButchersBlade.DisplayName: The Butcher's blade
+
+			WaterBoltSummon: {
+				DisplayName: Enchanted Water Stone
+				Tooltip: Contain the power of a Water Bolt
+			}
+
+			//Micelaneous
+			DevTablette.Tooltip: Tooltip1
+		}
+
+		ArmorSetBonus: {
+			GodsHunterHelmet0: Your worst nighmare...
+			GodsHunterHelmet1: Your Best nighmare...
+		}
+
+		NPCs.ZWE.DisplayName: Zara's World Eater
+
+		NPCMessages: {
+			ZWE1: Phase 2...
+			ZWE2: Phase 3...
+		}
+
+		BossChecklist: {
+			ZWE: {
+				SpawnInfo: ZWE SpawnInfoGaGa
+				DespawnMessage: ZWE DespawnMessageGlouGlou
+			}
+		}
+
+		Buffs: {
+			WaterBoltMinBu: {
+				DisplayName: Water Bolt Minion
+				Description: A Flying Water Bolt to fight with you
+			}
+		}
+
+		Projectiles: {
+			BombFishBomb.DisplayName: Blighted Bullet
+			ExtinctionProjectile.DisplayName: Extinction Projectile
+			JannedarcProjectile.DisplayName: Jannedarc Projectile
+			ExampleMinion.DisplayName: Example Minion
+			WaterBoltMinion.DisplayName: Water Bolt Minion
+			WaterBoltMinionP.DisplayName: Water Bolt Minion P
+			PercevalProjectile.DisplayName: Perceval Projectile
+		}
+	}
+}
