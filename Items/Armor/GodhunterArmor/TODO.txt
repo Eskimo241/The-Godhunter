@@ -1,0 +1,4 @@
+Multiple Armor Mode:
+-For every hp loss => maxhp+ & regen+
+-For every hp loss => defense+ & mana++
+-For every hp loss => dmg+ & 
