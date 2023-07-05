@@ -16,6 +16,7 @@ using MultiHitboxNPCLibrary;
 using System.Collections.Generic;
 using TheGodhunter;
 using Terraria.Localization;
+//using TheGodhunter.Systems.CameraSystem;
 
 
 namespace TheGodhunter.NPCs.Boss.ZaraWE
@@ -23,6 +24,8 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 	[AutoloadBossHead]
 	public class ZWE : ModNPC
 	{
+		private int iTimer; //how many frames invincibility lasts
+
 		public override void SetStaticDefaults()
 		{
 			NPCID.Sets.BossBestiaryPriority.Add(Type);
@@ -74,6 +77,7 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 			NPC.value = Item.buyPrice(silver: 1);
 			NPC.HitSound = SoundID.NPCHit54;
 			NPC.DeathSound = SoundID.NPCDeath52;
+			iTimer = 0;
 
 
 
@@ -85,11 +89,14 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 		public static void UpdateZWESpawning()
 		{
 			GHWorld.ZWESpawnTimer++;
-			if(GHWorld.ZWESpawnTimer >1024)
+			if(GHWorld.ZWESpawnTimer >100)
 			{
+				CameraSystem.camshake += 100;
+				CameraSystem.shakeType = 0;
 				foreach(Player player in Main.player)
 				{
 					SpawnOn(player);
+					
 					GHWorld.ZWESpawnTimer=0;
 					break;
 				}
@@ -122,6 +129,12 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 
         public override void AI()
 		{
+			if(iTimer>0) 
+			{
+				iTimer--;
+				if (iTimer ==0) NPC.dontTakeDamage = false;			//The countdown for iFrames
+			}
+
 			Player player = Main.player[NPC.target];
 			if (!player.active || player.dead)
 			{
@@ -157,7 +170,7 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 			Vector2 velocityGoal = 32 * (targetPoint - NPC.Center).SafeNormalize(Vector2.Zero);
 			NPC.velocity += (velocityGoal - NPC.velocity)/ 60;
 
-			//dig sounds, adapted from vanilla
+			
 			Vector2 vector18 = new Vector2(NPC.position.X + (float)NPC.width * 0.5f, NPC.position.Y + (float)NPC.height * 0.5f);
 			float num191 = Main.player[NPC.target].position.X + (float)(Main.player[NPC.target].width / 2);
 			float num192 = Main.player[NPC.target].position.Y + (float)(Main.player[NPC.target].height / 2);
@@ -189,7 +202,7 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 			
 
 
-			float minSpeed = NPC.noGravity ? 5 : 0; //NPC.noGravity ? 5 : 0    it verify that the noGravity is true, if true the minSpeed is 5, otherwise minSpeed is 0; Useless here as I defined the worm with noGravity at all
+			float minSpeed = NPC.noGravity ? 5 : 0; //NPC.noGravity ? 5 : 0    it verifies that the noGravity is true, if true the minSpeed is 5, otherwise minSpeed is 0; Useless here as I defined the worm with noGravity at all
 			float maxSpeed =512;
 			if (NPC.velocity.Length() > maxSpeed)
 			{
@@ -349,6 +362,8 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
                 }
 				
 			}
+			CameraSystem.camshake = 100;
+			CameraSystem.shakeType = 3;
 			ICollection<RectangleHitbox> collection = NPC.GetGlobalNPC<MultiHitboxNPC>().hitboxes.AllHitboxes();
 			foreach (RectangleHitbox hitbox in collection)
 			{
@@ -363,14 +378,20 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 				if(Phase!=0){
 					//Animation same but screen shake
 					Phase=2;
+					CameraSystem.shakeType = 2;
+					CameraSystem.camshake = 100;
 					NPC.life=NPC.lifeMax;
 					Main.NewText(Language.GetTextValue("Mods.TheGodhunter.NPCMessages.ZWE2"),109,36,255);
 					return false;
 				}
 				//Animation for second phase : Go above the player, glow white, blue explosion particle and remove first layer
 				Phase=1;
+				CameraSystem.shakeType = 1;
+				CameraSystem.camshake = 100;
 				NPC.life=NPC.lifeMax;
 				Main.NewText(Language.GetTextValue("Mods.TheGodhunter.NPCMessages.ZWE1"),109,36,255);
+				NPC.dontTakeDamage = true;
+				iTimer = 100;
 				return false;
 			}
 			
