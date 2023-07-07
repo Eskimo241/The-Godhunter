@@ -43,6 +43,20 @@
 				"DespawnMessage" : "ZWE DespawnMessage"
 			}
 		}
+		"Achievements" :{
+			"AchievementName" :{
+				"Name": "test",
+				"Description": "desc"
+			},
+			"test" :{
+				"Name": "TESTT",
+				"Description": "TTesTT"
+			},
+			"KillZWE" : {
+				"Name": "The Interdimensional Destroyer",
+				"Description": "Defeat the ZWE"
+			}
+		}
 	}
 }
 

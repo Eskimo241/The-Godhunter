@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria.DataStructures;
 using Terraria.Graphics.Effects;
+using static Terraria.ModLoader.ModContent;
 namespace TheGodhunter.Items.Consumable
 {
 	public class AstralGem : ModItem
@@ -57,9 +58,9 @@ namespace TheGodhunter.Items.Consumable
 		public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
 		{
 			//NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<ZWE>());
-			//if(!NPC.AnyNPCs(ModContent.NPCType<ZWE>()) && GHWorld.ZWESpawnTimer==0) GHWorld.ZWESpawnTimer=1;
+			if(!NPC.AnyNPCs(ModContent.NPCType<ZWE>()) && GHWorld.ZWESpawnTimer==0) GHWorld.ZWESpawnTimer=1;
 			//SoundEngine.PlaySound(SoundID.Roar, player.position);
-			
+						
 			return true;
 		}
 
@@ -89,7 +90,7 @@ namespace TheGodhunter.Items.Consumable
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Skull Buster");
+			DisplayName.SetDefault("Astral Gem");
 			Main.projFrames[Projectile.type] = 22;
 		}
 

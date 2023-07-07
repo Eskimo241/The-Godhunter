@@ -20,6 +20,7 @@ using TheGodhunter.Items.Armor.GodhunterArmor;
 using TheGodhunter.NPCs.Boss.ZaraWE;
 using ReLogic.Content;
 using Terraria.GameContent;
+using Terraria.Achievements;
 using static Terraria.ModLoader.ModContent;
 
 
@@ -30,16 +31,24 @@ namespace TheGodhunter
 
 		public static ModKeybind CycleModeHotkey;
 		public static ModKeybind ArmorBonusHotkey;
-		
+
+		#region Achievements
+		private  string AchievementTex = "TheGodhunter/Textures/Achievements/"; //The Folder for the textures
+		private string[]  AchievementsName = //Array with all Achievements' name
+		{
+			"test",					
+			"AchievementName",
+			"KillZWE"
+		};
+		public string [][] AchievementsCond = new string[3][]; //Initializing array with conditions; ModItem not yet initialized so we will add what we need later
+		#endregion
+
 		public override void Load()
 		{
 			ModUtils.Load();
 			 ArmorBonusHotkey = KeybindLoader.RegisterKeybind(this, "Armor Bonus Set Action", Keys.K);
 			 CycleModeHotkey = KeybindLoader.RegisterKeybind(this, "Cycle Writer's Mode", Keys.K);
-			
-			 
-			 
-			 
+
 		}
 
 		public override void Unload()
@@ -80,11 +89,8 @@ namespace TheGodhunter
 
             }   
 
-            		public override void PostSetupContent()
-		{
-			//Mod bossChecklist;
-			//ModLoader.TryGetMod("BossChecklist", out bossChecklist);
-			
+        public override void PostSetupContent()
+		{	
 			if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
 			{
 				
@@ -107,9 +113,17 @@ namespace TheGodhunter
                     }
 					//"$Mods.TheGodhunter.BossChecklist.ZWE.DespawnMessage" //Despawn Message
 					); //Boss Portrait
-					
 
-				
+			}
+
+			if(ModLoader.TryGetMod("TMLAchievements", out Mod TMLachievements))
+			{
+				#region AchievementsCond
+				AchievementsCond[0] = new string[] { "Collect_" + ItemID.RodofDiscord };	//Here we can add our Condition values; Everything is initialize so ItemType<>() will work. May exists better way
+				AchievementsCond[1] = new string[] { "Collect_" + ItemType<AstralGem>().ToString()};
+				AchievementsCond[2] = new string[] {"Kill_" + NPCType<ZWE>()};
+				#endregion
+				for(int i = 0; i< AchievementsName.Length; i++) TMLachievements.Call("AddAchievement", this, AchievementsName[i], AchievementCategory.Collector, AchievementTex + AchievementsName[i] , null, false, false, 2.5f, AchievementsCond[i]); 	//Making life easier, and code more readable
 
 			}
 		}
