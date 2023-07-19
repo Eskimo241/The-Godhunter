@@ -11,7 +11,7 @@ namespace TheGodhunter.Items.Placeable
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("God's Pearl");
+			// DisplayName.SetDefault("God's Pearl");
 		}
 		
         public override void SetDefaults()

@@ -14,10 +14,10 @@ namespace TheGodhunter.Items.Weapons
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Extinction");
+			// DisplayName.SetDefault("Extinction");
 			
 			ItemID.Sets.AnimatesAsSoul[Item.type] = true;
-			Tooltip.SetDefault("The extinction of life");
+			// Tooltip.SetDefault("The extinction of life");
 		}
 		public override void SetDefaults()
 		{

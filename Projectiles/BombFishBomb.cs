@@ -10,7 +10,7 @@ namespace TheGodhunter.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blighted Bullet");
+			// DisplayName.SetDefault("Blighted Bullet");
 		}
 
 		public override void SetDefaults()

@@ -8,7 +8,7 @@ namespace TheGodhunter.Items
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Empty Rune");
+			// DisplayName.SetDefault("Empty Rune");
 		}
         public override void SetDefaults()
         {

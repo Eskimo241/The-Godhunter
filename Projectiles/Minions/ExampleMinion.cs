@@ -10,7 +10,7 @@ namespace TheGodhunter.Projectiles.Minions
 	public class ExampleMinion : ModProjectile
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Example Minion");
+			// DisplayName.SetDefault("Example Minion");
 			// Sets the amount of frames this minion has on its spritesheet
 			Main.projFrames[Projectile.type] = 4;
 			// This is necessary for right-click targeting

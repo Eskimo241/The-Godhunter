@@ -27,7 +27,7 @@ namespace TheGodhunter.Tiles
             Main.tileLighted[Type] = true;
             MinPick = 50;
             
-            ItemDrop = Mod.Find<ModItem>("Astralite").Type;   //put your CustomBlock name
+            //ItemDrop/* tModPorter Note: Removed. Tiles and walls will drop the item which places them automatically. Use RegisterItemDrop to alter the automatic drop if necessary. */ = Mod.Find<ModItem>("Astralite").Type;   //put your CustomBlock name
              AddMapEntry(new Color (33, 133, 185), Language.GetText("Astralite"));
 
             DustType = 84;

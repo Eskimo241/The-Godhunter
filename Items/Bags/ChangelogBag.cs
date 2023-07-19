@@ -22,8 +22,8 @@ namespace TheGodhunter.Items.Bags
 	public class ChangelogBag : ModItem
 	{
 		public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Changelog Bag");
-			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\nSome items are in development like the armor set ");
+			// DisplayName.SetDefault("Changelog Bag");
+			// Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}\nSome items are in development like the armor set ");
 		}
 
 		public override void SetDefaults() {
@@ -54,9 +54,13 @@ namespace TheGodhunter.Items.Bags
 
 
 
+		public LocalizedText Desc => base.Tooltip.WithFormatArgs("TestTT");
 
-
-
+		
+		
+		public bool ZWEDowned(){
+			return DownedBossSystem.downedZWE;
+		}
         
 		public override void AddRecipes()
 		{
@@ -65,7 +69,7 @@ namespace TheGodhunter.Items.Bags
     			CreateRecipe()
         			.AddIngredient(ItemID.Wood, 5)
 				//	.AddCondition(NetworkText.FromKey("RecipeConditions.LowHealth"), r => Main.LocalPlayer.statLife < Main.LocalPlayer.statLifeMax / 2)
-					.AddCondition(NetworkText.FromKey("RecipeConditions.DownedZWE"), r => DownedBossSystem.downedZWE)
+					.AddCondition(Desc, ZWEDowned)
         			.Register();
 			
 			

@@ -8,8 +8,8 @@ namespace TheGodhunter.Items.Placeable
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gold King");
-            Tooltip.SetDefault("Currently useless");
+			// DisplayName.SetDefault("Gold King");
+            // Tooltip.SetDefault("Currently useless");
 		}
         public override void SetDefaults()
         {

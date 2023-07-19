@@ -10,8 +10,8 @@ namespace TheGodhunter.Items.Weapons
     public class WaterBoltSummon : ModItem
     {
         public override void SetStaticDefaults() {
-			DisplayName.SetDefault("Enchanted Water Stone");
-			Tooltip.SetDefault("Contain the power of a Water Bolt");
+			// DisplayName.SetDefault("Enchanted Water Stone");
+			// Tooltip.SetDefault("Contain the power of a Water Bolt");
 			ItemID.Sets.GamepadWholeScreenUseRange[Item.type] = true; // This lets the player target anywhere on the whole screen while using a controller.
 			ItemID.Sets.LockOnIgnoresCollision[Item.type] = true;
 		}

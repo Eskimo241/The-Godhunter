@@ -82,7 +82,7 @@ namespace TheGodhunter
 
 
         private const int saveVersion = 0;
-        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
         {
             int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
             if (ShiniesIndex == -1)
@@ -101,7 +101,7 @@ namespace TheGodhunter
                 for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 3E-05); k++)                                                                                                                                      //      |
                 {                                                                                                                                                                                                                      //       |
                     WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), 
-                    WorldGen.genRand.Next((int)WorldGen.worldSurfaceLow, Main.maxTilesY),
+                    WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, Main.maxTilesY),
                      (double)WorldGen.genRand.Next(5, 7), 
                      WorldGen.genRand.Next(3, 6), 
                      Mod.Find<ModTile>("AstraliteTileBlock").Type,

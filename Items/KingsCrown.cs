@@ -8,7 +8,7 @@ namespace TheGodhunter.Items
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("King's crown");
+			// DisplayName.SetDefault("King's crown");
 		}
         public override void SetDefaults()
         {

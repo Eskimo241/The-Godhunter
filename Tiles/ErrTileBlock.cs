@@ -12,9 +12,8 @@ namespace TheGodhunter.Tiles
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = true;
-            ItemDrop = Mod.Find<ModItem>("ERrROr").Type;   //put your CustomBlock name
-            AddMapEntry(new Color(200, 200, 200));
-        }
+            RegisterItemDrop(Mod.Find<ModItem>("ERrROr").Type);   //put your CustomBlock name
+            AddMapEntry(new Color(200, 200, 200));        }
       
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
         {

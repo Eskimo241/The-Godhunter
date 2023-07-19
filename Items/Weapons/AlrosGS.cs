@@ -9,8 +9,8 @@ namespace TheGodhunter.Items.Weapons         //The directory for your .cs and .p
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Alros Great Sword");
-            Tooltip.SetDefault("Work In Progress");
+			// DisplayName.SetDefault("Alros Great Sword");
+            // Tooltip.SetDefault("Work In Progress");
 		}
         public override void SetDefaults()
          {

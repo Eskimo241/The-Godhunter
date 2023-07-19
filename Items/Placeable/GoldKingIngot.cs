@@ -8,7 +8,7 @@ namespace TheGodhunter.Items.Placeable
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Gold King Bar");
+			// DisplayName.SetDefault("Gold King Bar");
 		}
         public override void SetDefaults()
         {

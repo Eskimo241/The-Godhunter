@@ -8,8 +8,8 @@ namespace TheGodhunter.Items.Placeable
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("ERrROr");
-            Tooltip.SetDefault("that's what it is");
+			// DisplayName.SetDefault("ERrROr");
+            // Tooltip.SetDefault("that's what it is");
 		}
         public override void SetDefaults()
         {

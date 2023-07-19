@@ -1,62 +1,219 @@
-﻿Mods: {
-	"TheGodhunter": {
-		"ItemName": {
+Mods: {
+	TheGodhunter: {
+		ItemName: {
 			//Armor
-
-
-			"GodsHunterHelmet" : "World Writer's Helmet",
-			"GodsHunterBreastplate" : "World Writer's Breastplate",
-			"GodsHunterLeggings" : "World Writer's Leggings",
-
+			
+			
+			GodsHunterHelmet: World Writer's Helmet
+			GodsHunterBreastplate: World Writer's Breastplate
+			GodsHunterLeggings: World Writer's Leggings
 			//Weapons
 			//BossSummons
-			"AstralGem" : "AstralGem"
-		},
-		"ItemTooltip": {
+			AstralGem: AstralGem
+		}
 
-
-			"GodsHunterHelmet" : "You are wearing the head of the Chaotic Entity, who would do that?",
-			"GodsHunterBreastplate" : "The torso of a deity-like entity, lighter than it looks",
-			"GodsHunterLeggings" : "The legs of the stongest opponent you have met so far, hoping to never see such a monstrosity again",
-
+		ItemTooltip: {
+			GodsHunterHelmet: You are wearing the head of the Chaotic Entity, who would do that?
+			GodsHunterBreastplate: The torso of a deity-like entity, lighter than it looks
+			GodsHunterLeggings: The legs of the stongest opponent you have met so far, hoping to never see such a monstrosity again
 			//BossSummons
-			"AstralGem" : "Summon the Zara's world Destroyer",
-
+			AstralGem: Summon the Zara's world Destroyer
 			//Micelaneous
-			"DevTablette" : "Tooltip1"
-		},
-		"ArmorSetBonus": {
-			"GodsHunterHelmet0" : "Your worst nighmare...",
-			"GodsHunterHelmet1" : "Your Best nighmare..."
+			DevTablette: Tooltip1
+		}
 
+		ArmorSetBonus: {
+			GodsHunterHelmet0: Your worst nighmare...
+			GodsHunterHelmet1: Your Best nighmare...
 		}
-		"NPCName":{
-			"ZWE": "Zara's World Eater"
+
+		NPCName.ZWE: Zara's World Eater
+
+		NPCMessages: {
+			ZWE1: Phase 2...
+			ZWE2: Phase 3...
 		}
-		"NPCMessages":{
-			"ZWE1": "Phase 2...",
-			"ZWE2": "Phase 3..."
-		}
-		"BossChecklist":{
-			"ZWE":{
-				"SpawnInfo" : "ZWE SpawnInfo",
-				"DespawnMessage" : "ZWE DespawnMessage"
+
+		BossChecklist: {
+			ZWE: {
+				SpawnInfoPart1: Use a
+				SpawnInfoPart2: at the sky altar
+				DespawnMessage: ZWE DespawnMessage
 			}
 		}
-		"Achievements" :{
-			"AchievementName" :{
-				"Name": "test",
-				"Description": "desc"
-			},
-			"test" :{
-				"Name": "TESTT",
-				"Description": "TTesTT"
-			},
-			"KillZWE" : {
-				"Name": "The Interdimensional Destroyer",
-				"Description": "Defeat the ZWE"
+
+		Achievements: {
+			AchievementName: {
+				Name: test
+				Description: desc
 			}
+
+			test: {
+				Name: TESTT
+				Description: TTesTT
+			}
+
+			KillZWE: {
+				Name: The Interdimensional Destroyer
+				Description: Defeat the ZWE
+			}
+		}
+
+		Projectiles: {
+			PercevalProjectile.DisplayName: Perceval Projectile
+			WaterBoltMinionP.DisplayName: Water Bolt Minion P
+			WaterBoltMinion.DisplayName: Water Bolt Minion
+			ExampleMinion.DisplayName: Example Minion
+			JannedarcProjectile.DisplayName: Jannedarc Projectile
+			ExtinctionProjectile.DisplayName: Extinction Projectile
+			BombFishBomb.DisplayName: Bomb Fish Bomb
+			AstralGemProj.DisplayName: Astral Gem Proj
+		}
+
+		NPCs.ZWE.DisplayName: Z W E
+
+		Items: {
+			WaterBoltSummon: {
+				Tooltip: ""
+				DisplayName: Water Bolt Summon
+			}
+
+			TheButchersBlade: {
+				Tooltip: ""
+				DisplayName: The Butchers Blade
+			}
+
+			Sharkanon: {
+				Tooltip: ""
+				DisplayName: Sharkanon
+			}
+
+			Perceval: {
+				Tooltip: ""
+				DisplayName: Perceval
+			}
+
+			KingsCleaver: {
+				Tooltip: ""
+				DisplayName: Kings Cleaver
+			}
+
+			Jeannedarc: {
+				Tooltip: ""
+				DisplayName: Jeannedarc
+			}
+
+			Extinction: {
+				Tooltip: ""
+				DisplayName: Extinction
+			}
+
+			DemonicSword: {
+				Tooltip: ""
+				DisplayName: Demonic Sword
+			}
+
+			AzesClaw: {
+				Tooltip: ""
+				DisplayName: Azes Claw
+			}
+
+			AlrosGS: {
+				Tooltip: ""
+				DisplayName: Alros G S
+			}
+
+			PlatinumQueenIngot: {
+				Tooltip: ""
+				DisplayName: Platinum Queen Ingot
+			}
+
+			PlatinumQueen: {
+				Tooltip: ""
+				DisplayName: Platinum Queen
+			}
+
+			GoldKingIngot: {
+				Tooltip: ""
+				DisplayName: Gold King Ingot
+			}
+
+			GoldKing: {
+				Tooltip: ""
+				DisplayName: Gold King
+			}
+
+			GodsPearl: {
+				Tooltip: ""
+				DisplayName: Gods Pearl
+			}
+
+			ERrROr: {
+				Tooltip: ""
+				DisplayName: E Rr R Or
+			}
+
+			AstraliteIngot: {
+				Tooltip: ""
+				DisplayName: Astralite Ingot
+			}
+
+			Astralite: {
+				Tooltip: ""
+				DisplayName: Astralite
+			}
+
+			KingsCrown: {
+				Tooltip: ""
+				DisplayName: Kings Crown
+			}
+
+			EmptyEnchentementRune: {
+				Tooltip: ""
+				DisplayName: Empty Enchentement Rune
+			}
+
+			AstralGem: {
+				Tooltip: ""
+				DisplayName: Astral Gem
+			}
+
+			ChangelogBag: {
+				Tooltip: ""
+				DisplayName: Changelog Bag
+			}
+
+			GodsHunterLeggings: {
+				Tooltip: ""
+				DisplayName: Gods Hunter Leggings
+			}
+
+			GodsHunterHelmet: {
+				Tooltip: ""
+				DisplayName: Gods Hunter Helmet
+			}
+
+			GodsHunterBreastplate: {
+				Tooltip: ""
+				DisplayName: Gods Hunter Breastplate
+			}
+
+			BombFishRocket: {
+				Tooltip: ""
+				DisplayName: Bomb Fish Rocket
+			}
+		}
+
+		Buffs: {
+			WaterBoltMinBu: {
+				Description: Mods.TheGodhunter.Buffs.WaterBoltMinBu.Description
+				DisplayName: Water Bolt Min Bu
+			}
+		}
+
+		Keybinds: {
+			"Cycle Writer's Mode.DisplayName": Cycle  Writer's  Mode
+			"Armor Bonus Set Action.DisplayName": Armor  Bonus  Set  Action
 		}
 	}
 }
-

@@ -8,8 +8,8 @@ namespace TheGodhunter.Items.Weapons
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Perceval");
-			Tooltip.SetDefault("It's a small spear but she deal a lot of damage");
+			// DisplayName.SetDefault("Perceval");
+			// Tooltip.SetDefault("It's a small spear but she deal a lot of damage");
 		}
 		public override void SetDefaults()
 		{

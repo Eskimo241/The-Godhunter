@@ -8,7 +8,7 @@ namespace TheGodhunter.Items.Placeable
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Astralite");
+			// DisplayName.SetDefault("Astralite");
 		}
         public override void SetDefaults()
         {

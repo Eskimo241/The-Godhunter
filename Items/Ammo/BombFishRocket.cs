@@ -9,8 +9,8 @@ namespace TheGodhunter.Items.Ammo
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bomb Fish Ammunition ");
-			Tooltip.SetDefault("Ammo used as rocket\nBe careful it explode");
+			// DisplayName.SetDefault("Bomb Fish Ammunition ");
+			// Tooltip.SetDefault("Ammo used as rocket\nBe careful it explode");
 		}
 
 		public override void SetDefaults()

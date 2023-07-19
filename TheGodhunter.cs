@@ -94,8 +94,8 @@ namespace TheGodhunter
 			if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
 			{
 				
-				bossChecklist.Call(
-					"AddBoss", //Entry Type
+				/*bossChecklist.Call(
+					"LogBoss", //Entry Type
 					this, //Mod Instance
 					"$Mods.TheGodhunter.NPCName.ZWE", //Boss Name
 					ModContent.NPCType<NPCs.Boss.ZaraWE.ZWE>(), //Boss ID
@@ -112,7 +112,30 @@ namespace TheGodhunter
                         sb.Draw(texture, centered, texture.Frame(), color, 0f, texture.Size() / 2, 0.2f, SpriteEffects.None, 0f);
                     }
 					//"$Mods.TheGodhunter.BossChecklist.ZWE.DespawnMessage" //Despawn Message
-					); //Boss Portrait
+					); //Boss Portrait*/
+					Func<LocalizedText> ZWEspawnInfo = delegate()
+					{
+						LocalizedText text = Language.GetOrRegister(Language.GetText("Mods.TheGodhunter.BossChecklist.ZWE.SpawnInfoPart1") + " [i:" + ModContent.ItemType<AstralGem>() + "]" + Language.GetText("Mods.TheGodhunter.BossChecklist.ZWE.SpawnInfoPart2")); 
+						return text; // I don't know another way to do it, but at least it works!
+					};
+
+					bossChecklist.Call
+					(
+						"LogBoss",
+						this,
+						//Language.GetText("Mods.TheGodhunter.NPCName.ZWE"),
+						nameof(ZWE),
+						1.5f,
+						() => DownedBossSystem.downedZWE,
+						ModContent.NPCType<ZWE>(),
+						new Dictionary<string, object>()
+						{
+						["spawnItems"] = ModContent.ItemType<AstralGem>(),
+						["displayName"] = Language.GetText("Mods.TheGodhunter.NPCName.ZWE"),
+						["spawnInfo"] = ZWEspawnInfo,
+						// Other optional arguments as needed...
+						}
+					);
 
 			}
 
@@ -123,10 +146,13 @@ namespace TheGodhunter
 				AchievementsCond[1] = new string[] { "Collect_" + ItemType<AstralGem>().ToString()};
 				AchievementsCond[2] = new string[] {"Kill_" + NPCType<ZWE>()};
 				#endregion
+				
 				for(int i = 0; i< AchievementsName.Length; i++) TMLachievements.Call("AddAchievement", this, AchievementsName[i], AchievementCategory.Collector, AchievementTex + AchievementsName[i] , null, false, false, 2.5f, AchievementsCond[i]); 	//Making life easier, and code more readable
 
 			}
 		}
+		
+
 		
 
 

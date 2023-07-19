@@ -8,7 +8,7 @@ namespace TheGodhunter.Items.Weapons         //The directory for your .cs and .p
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Aze's Claw");
+			// DisplayName.SetDefault("Aze's Claw");
 		}
         public override void SetDefaults()
          {
@@ -44,7 +44,7 @@ namespace TheGodhunter.Items.Weapons         //The directory for your .cs and .p
         
         }*/
 
-        		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit) {
+        		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) {
 			// Add Onfire buff to the NPC for 1 second
 			// 60 frames = 1 second
 			target.AddBuff(BuffID.OnFire, 600);

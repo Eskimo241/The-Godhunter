@@ -12,8 +12,8 @@ namespace TheGodhunter.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Water Bolt Minion");
-			Description.SetDefault("A Flying Water Bolt to fight with you");
+            // DisplayName.SetDefault("Water Bolt Minion");
+			// Description.SetDefault("A Flying Water Bolt to fight with you");
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
 

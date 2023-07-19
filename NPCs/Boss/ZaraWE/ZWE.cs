@@ -12,7 +12,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent;
 using ReLogic.Content;
 using Terraria.DataStructures;
-using MultiHitboxNPCLibrary;
+//using MultiHitboxNPCLibrary;
 using System.Collections.Generic;
 using TheGodhunter;
 using Terraria.Localization;
@@ -25,6 +25,7 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 	public class ZWE : ModNPC
 	{
 		private int iTimer; //how many frames invincibility lasts
+		public int zweSpawnTimer = 0;
 
 		public override void SetStaticDefaults()
 		{
@@ -67,7 +68,7 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 			NPC.defense = 0;
 			NPC.damage = 24;
 			NPC.knockBackResist = 0f;
-			NPC.lifeMax = Main.masterMode ? 750000 / 3 : Main.expertMode ? 500000 / 2 : 38000;
+			NPC.lifeMax = Main.masterMode ? 5000  : Main.expertMode ? 4000  : 3000;
 			NPC.noTileCollide = true;
 			NPC.noGravity = true;
 			NPC.lavaImmune = true;
@@ -105,10 +106,12 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 
 		public static void SpawnOn(Player player)
 		{
+			
 			NPC zwe = Main.npc[NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.Center.X+2500, (int)player.Center.Y + 1400, NPCType<ZWE>())];
 			Main.NewText(Language.GetTextValue("Announcement.HasAwoken", zwe.TypeName), 171, 64, 255);
 			//SoundEngine.PlaySound(Sounds.ConvectiveWandererRoar, player.position);
 			SoundEngine.PlaySound(SoundID.Roar, player.position);
+
 		}
 
 		public override void OnKill()
@@ -160,13 +163,21 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 
 			//Do AI
             NPC.noGravity = true; 
-
+			Vector2 targetPoint;
+			if (Phase == 0) 
+				{
+				 targetPoint = player.Center + new Vector2(0, -400);
+				}
 			
-				Vector2 targetPoint = player.Center;
-											NPC.ai[0] = 0;
+			
+			else 
+			{
+				targetPoint = player.Center;
+			}
 
-			//Vector2 targetPoint = player.Center ;
-			//Vector2 targetPoint = player.Center + new Vector2(0, -400); crawl in circle over the player
+			NPC.ai[0] = 0;
+
+
 			Vector2 velocityGoal = 32 * (targetPoint - NPC.Center).SafeNormalize(Vector2.Zero);
 			NPC.velocity += (velocityGoal - NPC.velocity)/ 60;
 
@@ -239,16 +250,16 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 			}
 
 			//position hitbox segments
-			List<RectangleHitboxData> hitboxes = new List<RectangleHitboxData>();
+			/*List<RectangleHitboxData> hitboxes = new List<RectangleHitboxData>();
 			for (int h = 0; h < numSegments; h++)
 			{
 				Vector2 spot = segmentPositions[h * segmentsPerHitbox + hitboxSegmentOffset];
 				hitboxes.Add(new RectangleHitboxData(new Rectangle((int)spot.X - NPC.width / 2, (int)spot.Y - NPC.height / 2, NPC.width, NPC.height)));
-			}
-			NPC.GetGlobalNPC<MultiHitboxNPC>().AssignHitboxFrom(hitboxes);
+			}*/
+			//NPC.GetGlobalNPC<MultiHitboxNPC>().AssignHitboxFrom(hitboxes);
 
 			//dig effect adapted from vanilla
-			foreach (RectangleHitbox rectangleHitbox in NPC.GetGlobalNPC<MultiHitboxNPC>().hitboxes.AllHitboxes())
+			/*foreach (RectangleHitbox rectangleHitbox in NPC.GetGlobalNPC<MultiHitboxNPC>().hitboxes.AllHitboxes())
 			{
 				Rectangle hitbox = rectangleHitbox.hitbox;
 				int num180 = (int)(hitbox.X / 16f) - 1;
@@ -294,7 +305,7 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 						}
 					}
 				}
-			}
+			}*/
 		}
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -364,14 +375,14 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 			}
 			CameraSystem.camshake = 100;
 			CameraSystem.shakeType = 3;
-			ICollection<RectangleHitbox> collection = NPC.GetGlobalNPC<MultiHitboxNPC>().hitboxes.AllHitboxes();
+			/*ICollection<RectangleHitbox> collection = NPC.GetGlobalNPC<MultiHitboxNPC>().hitboxes.AllHitboxes();
 			foreach (RectangleHitbox hitbox in collection)
 			{
 				for (int j = 0; j < 3; j++)
 				{
 					Main.dust[Dust.NewDust(hitbox.hitbox.TopLeft(), hitbox.hitbox.Width, hitbox.hitbox.Height, 74, Scale: 1.75f)].noGravity = true;
 				}
-			}
+			}*/
 			return true;
 			}
 			else{
@@ -380,7 +391,7 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 					Phase=2;
 					CameraSystem.shakeType = 2;
 					CameraSystem.camshake = 100;
-					NPC.life=NPC.lifeMax;
+					NPC.life=NPC.lifeMax =Main.masterMode ? 5000  : Main.expertMode ? 4000  : 3000;
 					Main.NewText(Language.GetTextValue("Mods.TheGodhunter.NPCMessages.ZWE2"),109,36,255);
 					return false;
 				}
@@ -388,7 +399,7 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 				Phase=1;
 				CameraSystem.shakeType = 1;
 				CameraSystem.camshake = 100;
-				NPC.life=NPC.lifeMax;
+				NPC.life=NPC.lifeMax = Main.masterMode ? 15000  : Main.expertMode ? 10000  : 7500;
 				Main.NewText(Language.GetTextValue("Mods.TheGodhunter.NPCMessages.ZWE1"),109,36,255);
 				NPC.dontTakeDamage = true;
 				iTimer = 100;

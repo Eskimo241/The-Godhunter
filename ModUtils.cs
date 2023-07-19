@@ -48,7 +48,7 @@ namespace TheGodhunter
 				Logging.PublicLogger.Debug(e);
 			}
 
-			IL.Terraria.GameContent.Drawing.TileDrawing.DrawMultiTileVines += TileDrawing_DrawMultiTileVines;
+			Terraria.GameContent.Drawing.IL_TileDrawing.DrawMultiTileVines += TileDrawing_DrawMultiTileVines;
 		}
 
 		public static void Unload()

@@ -5,6 +5,6 @@ hideResources = false
 includeSource = true
 hideCode = false
 includePDB = true
-modReferences = MultiHitboxNPCLibrary
+
 
 buildIgnore = obj\*, bin\*, .vs\*, .git\*, BuildIgnore\*

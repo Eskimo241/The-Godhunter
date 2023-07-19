@@ -8,7 +8,7 @@ namespace TheGodhunter.Items.Weapons         //The directory for your .cs and .p
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("The Butcher's blade");
+			// DisplayName.SetDefault("The Butcher's blade");
 		}
         public override void SetDefaults()
          {
