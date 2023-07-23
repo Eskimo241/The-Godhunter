@@ -107,7 +107,8 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 		public static void SpawnOn(Player player)
 		{
 			
-			NPC zwe = Main.npc[NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.Center.X+2500, (int)player.Center.Y + 1400, NPCType<ZWE>())];
+			//NPC zwe = Main.npc[NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.Center.X+2500, (int)player.Center.Y + 1400, NPCType<ZWE>())];
+			NPC zwe = Main.npc[NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.Center.X-2500, (int)player.Center.Y-400, NPCType<ZWE>())];
 			Main.NewText(Language.GetTextValue("Announcement.HasAwoken", zwe.TypeName), 171, 64, 255);
 			//SoundEngine.PlaySound(Sounds.ConvectiveWandererRoar, player.position);
 			SoundEngine.PlaySound(SoundID.Roar, player.position);
@@ -166,7 +167,9 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 			Vector2 targetPoint;
 			if (Phase == 0) 
 				{
-				 targetPoint = player.Center + new Vector2(0, -400);
+				 //targetPoint = player.Center + new Vector2(0, -400);
+				 //targetPoint = new Vector2(999999 , 2400);
+				 targetPoint = new Vector2(NPC.Center.X +10, NPC.Center.Y);
 				}
 			
 			
@@ -214,7 +217,7 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 
 
 			float minSpeed = NPC.noGravity ? 5 : 0; //NPC.noGravity ? 5 : 0    it verifies that the noGravity is true, if true the minSpeed is 5, otherwise minSpeed is 0; Useless here as I defined the worm with noGravity at all
-			float maxSpeed =512;
+			float maxSpeed =/*512*/1;
 			if (NPC.velocity.Length() > maxSpeed)
 			{
 				NPC.velocity = NPC.velocity.SafeNormalize(Vector2.Zero) * maxSpeed;

@@ -9,7 +9,8 @@ Mods: {
 			GodsHunterLeggings: World Writer's Leggings
 			//Weapons
 			//BossSummons
-			AstralGem: AstralGem
+			AstralGem: Astral Gem
+			SWRoot: SuperWeapon Root WIP
 		}
 
 		ItemTooltip: {
@@ -21,6 +22,20 @@ Mods: {
 			//Micelaneous
 			DevTablette: Tooltip1
 		}
+
+		//region SWTooltips
+		SWRootTT1:
+			'''
+			The [c/5CCB14: Forest Guardian] now being dormant 
+			this sword is only a fraction of its original power.
+			However a powerful aura comes out of its blade
+			Press [Shift] for more details
+			'''
+		SWRootTT2:
+			'''
+			Left click to use three powerful attacks in turn
+			Right click to use the power of the [c/5CCB14: Forest Guardian]
+			'''
 
 		ArmorSetBonus: {
 			GodsHunterHelmet0: Your worst nighmare...
@@ -68,6 +83,9 @@ Mods: {
 			ExtinctionProjectile.DisplayName: Extinction Projectile
 			BombFishBomb.DisplayName: Bomb Fish Bomb
 			AstralGemProj.DisplayName: Astral Gem Proj
+			SWRootPierceProj.DisplayName: S W Root Pierce Proj
+			SWRootAltProj1.DisplayName: S W Root Alt Proj1
+			SWRootAltProj2.DisplayName: S W Root Alt Proj2
 		}
 
 		NPCs.ZWE.DisplayName: Z W E
@@ -202,6 +220,11 @@ Mods: {
 				Tooltip: ""
 				DisplayName: Bomb Fish Rocket
 			}
+
+			SWRoot: {
+				DisplayName: S W Root
+				Tooltip: ""
+			}
 		}
 
 		Buffs: {
@@ -209,11 +232,18 @@ Mods: {
 				Description: Mods.TheGodhunter.Buffs.WaterBoltMinBu.Description
 				DisplayName: Water Bolt Min Bu
 			}
+
+			OuchDebuff: {
+				DisplayName: Ouch
+				Description: Let's not do that again
+			}
 		}
 
 		Keybinds: {
 			"Cycle Writer's Mode.DisplayName": Cycle  Writer's  Mode
 			"Armor Bonus Set Action.DisplayName": Armor  Bonus  Set  Action
 		}
+
+		DeathReasons.HeadTrauma: " unexpectedly died of head trauma"
 	}
 }

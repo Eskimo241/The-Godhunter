@@ -19,6 +19,11 @@ namespace TheGodhunter
         public bool WaterBoltMinion = false;
         public bool Pet = false;
         public static bool hasProjectile;
+
+        public static Vector2 oldpos;
+        public static int olddir;
+        public static int LockX = -1;
+        public static int LockY = -1;
         
         
 
@@ -29,6 +34,28 @@ namespace TheGodhunter
             Pet = false;
 
         }
+
+        public override void PreUpdate()
+        {
+
+
+            if (LockY >0 && MyPlayer.oldpos.Y !=-1)
+            {
+                Player.velocity = Vector2.Zero;
+                Player.direction = olddir;
+                Player.position.Y = oldpos.Y;
+                LockY--;
+            }
+            if (LockX >0 && MyPlayer.oldpos.X !=-1)
+            {
+                Player.velocity = Vector2.Zero;
+                Player.direction = olddir;
+                Player.position.X = oldpos.X;
+                LockX--;
+            }
+        }
+
+
 
 
 

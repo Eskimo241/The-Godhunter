@@ -129,6 +129,7 @@ namespace TheGodhunter.Items.Armor.GodhunterArmor
 			player.buffImmune[BuffID.Stinky] = true;
 			player.buffImmune[BuffID.WindPushed] = true;
 			player.buffImmune[BuffID.NoBuilding] = true;
+			player.noFallDmg = true;
 
 		if(BaseHpSet == false)
 		{

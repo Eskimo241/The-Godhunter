@@ -100,14 +100,17 @@ namespace TheGodhunter
                                                                                                                                                                                                                                          //Put your custom tile block name
                 for (int k = 0; k < (int)((double)(Main.maxTilesX * Main.maxTilesY) * 3E-05); k++)                                                                                                                                      //      |
                 {                                                                                                                                                                                                                      //       |
-                    WorldGen.TileRunner(WorldGen.genRand.Next(0, Main.maxTilesX), 
-                    WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, Main.maxTilesY),
-                     (double)WorldGen.genRand.Next(5, 7), 
-                     WorldGen.genRand.Next(3, 6), 
-                     Mod.Find<ModTile>("AstraliteTileBlock").Type,
-                      false, 0f, 0f,
-                       false, 
-                       true);
+                    WorldGen.TileRunner
+                    (
+                        WorldGen.genRand.Next(0, Main.maxTilesX), 
+                        WorldGen.genRand.Next((int)GenVars.worldSurfaceLow, Main.maxTilesY),
+                        (double)WorldGen.genRand.Next(5, 7), 
+                        WorldGen.genRand.Next(3, 6), 
+                        Mod.Find<ModTile>("AstraliteTileBlock").Type,
+                        false, 0f, 0f,
+                        false, 
+                        true
+                    );
                 }
                 }
 

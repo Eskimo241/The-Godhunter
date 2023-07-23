@@ -31,7 +31,8 @@ namespace TheGodhunter.Projectiles
             Main.player[Projectile.owner].itemTime = Main.player[Projectile.owner].itemAnimation;
             Projectile.position.X = Main.player[Projectile.owner].position.X + (float)(Main.player[Projectile.owner].width / 2) - (float)(Projectile.width / 2);
             Projectile.position.Y = Main.player[Projectile.owner].position.Y + (float)(Main.player[Projectile.owner].height / 2) - (float)(Projectile.height / 2);
-            Projectile.position += Projectile.velocity * Projectile.ai[0]; if (Projectile.ai[0] == 0f)
+            Projectile.position += Projectile.velocity * Projectile.ai[0]; 
+            if (Projectile.ai[0] == 0f)
             {
                 Projectile.ai[0] = 3f;
                 Projectile.netUpdate = true;
