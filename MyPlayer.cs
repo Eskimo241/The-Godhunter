@@ -53,6 +53,7 @@ namespace TheGodhunter
                 Player.position.X = oldpos.X;
                 LockX--;
             }
+
         }
 
 

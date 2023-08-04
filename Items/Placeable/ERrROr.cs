@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
+//Hey useless as hell!
 namespace TheGodhunter.Items.Placeable
 {
     public class ERrROr : ModItem

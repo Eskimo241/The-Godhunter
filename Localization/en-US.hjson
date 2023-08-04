@@ -26,15 +26,15 @@ Mods: {
 		//region SWTooltips
 		SWRootTT1:
 			'''
-			The [c/5CCB14: Forest Guardian] now being dormant 
+			The [c/5CCB14: Forest Guardian] now being dormant, 
 			this sword is only a fraction of its original power.
 			However a powerful aura comes out of its blade
 			Press [Shift] for more details
 			'''
 		SWRootTT2:
 			'''
-			Left click to use three powerful attacks in turn
-			Right click to use the power of the [c/5CCB14: Forest Guardian]
+			Left click to deal three powerful attacks in turn
+			Right click to unleash the power of the [c/5CCB14: Forest Guardian]
 			'''
 
 		ArmorSetBonus: {
@@ -83,9 +83,10 @@ Mods: {
 			ExtinctionProjectile.DisplayName: Extinction Projectile
 			BombFishBomb.DisplayName: Bomb Fish Bomb
 			AstralGemProj.DisplayName: Astral Gem Proj
-			SWRootPierceProj.DisplayName: S W Root Pierce Proj
-			SWRootAltProj1.DisplayName: S W Root Alt Proj1
-			SWRootAltProj2.DisplayName: S W Root Alt Proj2
+			SWRootPierceProj.DisplayName: SW Root PierceProj
+			SWRootAltProj1.DisplayName: SW Root AltProj1
+			SWRootAltProj2.DisplayName: SW Root AltProj2
+			SWRootAltProj3.DisplayName: SW Root AltProj3
 		}
 
 		NPCs.ZWE.DisplayName: Z W E
@@ -197,7 +198,7 @@ Mods: {
 			}
 
 			ChangelogBag: {
-				Tooltip: ""
+				Tooltip: Gives items that reveived changes and a powerful set
 				DisplayName: Changelog Bag
 			}
 

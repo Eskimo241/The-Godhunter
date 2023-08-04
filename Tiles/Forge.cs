@@ -8,6 +8,8 @@ using Terraria.Localization;
 using static Terraria.ModLoader.ModContent;
 using Terraria.DataStructures;
 
+//LUL
+
 namespace TheGodhunter.Tiles
 {
 	public abstract class Forge : ModTile

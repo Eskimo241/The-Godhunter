@@ -1,7 +1,11 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
- 
+
+/*This item here is the very first thing I have done, this is the most basic sword ever made, I think I had created it using the mod skeleton generator.
+Also thank you Al0n37 that had created a playlist on how to make Terraria mods, they were really useful at the time*/
+
+
 namespace TheGodhunter.Items.Weapons         //The directory for your .cs and .png; Example: Mod Sources/TutorialMOD/Items
 {
     public class DemonicSword : ModItem

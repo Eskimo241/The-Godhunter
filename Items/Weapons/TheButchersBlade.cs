@@ -1,7 +1,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
- 
+
+//Here is one of the weapon I had forgotten about 
 namespace TheGodhunter.Items.Weapons         //The directory for your .cs and .png; Example: Mod Sources/TutorialMOD/Items
 {
     public class TheButchersBlade : ModItem

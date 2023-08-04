@@ -63,21 +63,25 @@ namespace TheGodhunter.Items.Weapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.altFunctionUse == 2 )
+            if (player.altFunctionUse == 2 && Math.Abs(player.velocity.Y) < 4 )
             {
+                //Extra condition if in air, gotta find how to check
                 Projectile.NewProjectile(source, player.Center, new Vector2 (0,0), ProjectileType<SWRootAltProj1>(), 0,0, player.whoAmI);
                 player.noFallDmg = true;
                 MyPlayer.LockX = 60;
                 MyPlayer.olddir = player.direction;
                 MyPlayer.oldpos.X = player.position.X;
-                Main.NewText(source);
+                MyPlayer.oldpos.Y = player.position.Y;
+                player.GiveImmuneTimeForCollisionAttack( 100);
+
+                
             }
             else
             {
                 Vector2 ShootVel = Vector2.Normalize(Main.MouseWorld - player.Center);
                 switch (atkCycle){
                     case 0 :
-                        Projectile.NewProjectile(source, player.Center,new Vector2 (0,-1), ModContent.ProjectileType<SWRootAltProj1>(),1,0, player.whoAmI );
+                        
                         break;
                     
                     

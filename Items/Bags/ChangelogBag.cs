@@ -40,14 +40,13 @@ namespace TheGodhunter.Items.Bags
 		}
 
 		public override void ModifyItemLoot(ItemLoot itemLoot){
-			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AlrosGS>(),1,1,1));
+			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SWRoot>(),1,1,1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AstralGem>(),1,1,1));
-			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AzesClaw>(),1,1,1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Extinction>(),1,1,1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GodsHunterBreastplate>(),1,1,1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GodsHunterHelmet>(),1,1,1));
 			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<GodsHunterLeggings>(),1,1,1));
-			itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<WaterBoltSummon>(),1,1,1));
+
 		}
 
 		
@@ -68,8 +67,7 @@ namespace TheGodhunter.Items.Bags
 
     			CreateRecipe()
         			.AddIngredient(ItemID.Wood, 5)
-				//	.AddCondition(NetworkText.FromKey("RecipeConditions.LowHealth"), r => Main.LocalPlayer.statLife < Main.LocalPlayer.statLifeMax / 2)
-					.AddCondition(Desc, ZWEDowned)
+					//	.AddCondition(Desc, ZWEDowned)
         			.Register();
 			
 			

@@ -4,7 +4,9 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
- 
+
+//I once asked myself: "Damn why has no one made a Waterbolt minion ?" Then I made it. Nothing else to say about it
+
 namespace TheGodhunter.Items.Weapons
 {  
     public class WaterBoltSummon : ModItem

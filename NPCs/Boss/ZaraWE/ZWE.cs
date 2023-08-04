@@ -16,8 +16,9 @@ using Terraria.DataStructures;
 using System.Collections.Generic;
 using TheGodhunter;
 using Terraria.Localization;
-//using TheGodhunter.Systems.CameraSystem;
 
+//Soooo yeah, since MultiHitboxNPC is not in use anymore I have to make a new hitbox, and that is something I am not familiar with at all
+//I may take a look at the new Exemple Mod Worm to make it as I did it before
 
 namespace TheGodhunter.NPCs.Boss.ZaraWE
 {
@@ -68,7 +69,7 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 			NPC.defense = 0;
 			NPC.damage = 24;
 			NPC.knockBackResist = 0f;
-			NPC.lifeMax = Main.masterMode ? 5000  : Main.expertMode ? 4000  : 3000;
+			NPC.lifeMax = Main.masterMode ? 5000/2  : Main.expertMode ? 4000/2  : 3000/2;
 			NPC.noTileCollide = true;
 			NPC.noGravity = true;
 			NPC.lavaImmune = true;
@@ -103,6 +104,23 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 				}
 			}
 		}
+
+        public override bool CheckActive()
+        {
+            return false;
+        }
+
+        public override void ModifyIncomingHit(ref NPC.HitModifiers modifiers)
+        {
+
+			modifiers.SetMaxDamage(1000);
+        }
+
+
+
+        
+        
+        
 
 		public static void SpawnOn(Player player)
 		{
@@ -161,8 +179,8 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 			//changeable ai values
 			float rotationFade = 9f;
 			float rotationAmount = 0.1f;
-
-			//Do AI
+			float maxSpeed;
+			
             NPC.noGravity = true; 
 			Vector2 targetPoint;
 			if (Phase == 0) 
@@ -170,12 +188,15 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 				 //targetPoint = player.Center + new Vector2(0, -400);
 				 //targetPoint = new Vector2(999999 , 2400);
 				 targetPoint = new Vector2(NPC.Center.X +10, NPC.Center.Y);
+				 maxSpeed = 10;
+				 
 				}
 			
 			
 			else 
 			{
 				targetPoint = player.Center;
+				maxSpeed = 50;
 			}
 
 			NPC.ai[0] = 0;
@@ -217,7 +238,8 @@ namespace TheGodhunter.NPCs.Boss.ZaraWE
 
 
 			float minSpeed = NPC.noGravity ? 5 : 0; //NPC.noGravity ? 5 : 0    it verifies that the noGravity is true, if true the minSpeed is 5, otherwise minSpeed is 0; Useless here as I defined the worm with noGravity at all
-			float maxSpeed =/*512*/1;
+			
+
 			if (NPC.velocity.Length() > maxSpeed)
 			{
 				NPC.velocity = NPC.velocity.SafeNormalize(Vector2.Zero) * maxSpeed;

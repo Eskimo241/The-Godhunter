@@ -1,10 +1,10 @@
 author = Eskimo241
-version = 0.0.4.1
+version = 0.0.5.0
 displayName = The Godhunter
 hideResources = false
 includeSource = true
 hideCode = false
 includePDB = true
+homepage = https://eskimo241.github.io/The-Godhunter/
 
-
-buildIgnore = obj\*, bin\*, .vs\*, .git\*, BuildIgnore\*
+buildIgnore = obj\*, bin\*, .vs\*, .git\*, BuildIgnore\*, Designs\*, LICENCE, README.MD

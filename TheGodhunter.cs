@@ -45,7 +45,7 @@ namespace TheGodhunter
 
 		public override void Load()
 		{
-			ModUtils.Load();
+			//ModUtils.Load();
 			 ArmorBonusHotkey = KeybindLoader.RegisterKeybind(this, "Armor Bonus Set Action", Keys.K);
 			 CycleModeHotkey = KeybindLoader.RegisterKeybind(this, "Cycle Writer's Mode", Keys.K);
 
@@ -53,7 +53,7 @@ namespace TheGodhunter
 
 		public override void Unload()
 		{
-			ModUtils.Unload();
+			//ModUtils.Unload();
 			ArmorBonusHotkey = null;
 			CycleModeHotkey = null;
 			

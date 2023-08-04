@@ -17,12 +17,12 @@ using Terraria.Utilities;
 
 namespace TheGodhunter.Projectiles
 {
-    public class SWRootAltProj1 : ModProjectile
+    public class SWRootAltProj1 : ModProjectile //First Proj = sword throw
     {
-       // public override string Texture => "TheGodhunter/Projectiles/emptyproj";
+
         private float BladeFrame = 0;
         private float TargetPoint = -1f;
-        private bool colide = false;
+        private bool collide = false;
 
         
 
@@ -54,35 +54,46 @@ namespace TheGodhunter.Projectiles
             }
 
             if (TargetPoint == -1)
-            {TargetPoint = owner.position.Y - 300;
-            Projectile.velocity.Y = -15;}
+            {
+                TargetPoint = owner.position.Y - 300;
+                Projectile.velocity.Y = -15; // we give it a little push
+            }
 
-            if (/*Projectile.position.Y >= TargetPoint && */!colide && Projectile.velocity.Y <0 )
+            if (/*Projectile.position.Y >= TargetPoint && */!collide && Projectile.velocity.Y <0 )
             {
                 
                // Projectile.velocity += new Vector2 (0,-1);
-               Projectile.velocity.Y = Projectile.velocity.Y +  0.3f;
+               Projectile.velocity.Y = Projectile.velocity.Y +  0.3f; //slow down like gravity
             }
             else
             {
+                Projectile.ai[0]++;
                 
                 Projectile.velocity = Vector2.Zero;
-                owner.position = Projectile.position - new Vector2(7.5f,1); //You may ask why the new Vector 2. This is to prevent teleporting into tiles, I have no idea why it is doing that. I had to find 7.5 the hard way °-°
+                owner.Center = Projectile.Center;
                 MyPlayer.oldpos.X = owner.position.X;
-                MyPlayer.oldpos.Y = owner.position.Y ;
-                MyPlayer.LockY = 60;
+
                 
-                if (colide) {
+                if (collide) {
                     owner.AddBuff(ModContent.BuffType<OuchDebuff>(), 600);
                     
                     owner.Hurt(PlayerDeathReason.ByCustomReason (owner.name+ Language.GetTextValue("Mods.TheGodhunter.DeathReasons.HeadTrauma")), 10, 0, false, false, -1,false ,0 ,0 ,0);
-                    MyPlayer.LockX = MyPlayer.LockY = 0;
+                    //Maybe change the texture to make it like it is stuck to the roof ? Kill and create other projectile that falls and can hurt player for even more head trauma
+                    MyPlayer.LockX = MyPlayer.LockY = -1;
+                    Projectile.Kill();
                 }
-
-
-                Projectile.Kill();
-                //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(0,0), ProjectileType<SWRootAltProj2>(),10,0);
-                owner.noFallDmg = false;
+                else
+                {
+                    Projectile.velocity = Vector2.Zero;
+                    if(Projectile.ai[0]>30)
+                        {
+                            Projectile.Kill();
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(0,0), ProjectileType<SWRootAltProj2>(),0,0);
+                        }
+                
+                    
+                }
+                
             }
         }
 
@@ -91,7 +102,7 @@ namespace TheGodhunter.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            colide = true;
+            collide = true;
             return false;
         }
 

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 using System;
 using Microsoft.Xna.Framework;
-
+//Kinda useless, for now...
 namespace TheGodhunter.Items.Placeable
 {
     public class GodsPearl : ModItem

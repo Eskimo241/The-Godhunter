@@ -5,6 +5,7 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.GameContent.Creative;
 using Terraria.Localization;
 using TheGodhunter;
+//Actually pretty easy to work on, but it needs sprite ASAP
 namespace TheGodhunter.Items.Armor.GodhunterArmor
 {
 	

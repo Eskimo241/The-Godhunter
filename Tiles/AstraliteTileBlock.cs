@@ -9,7 +9,7 @@ using Terraria.ID;
 using System;
 using System.Collections.Generic;
 
-
+//I have no idea why the sprite is actually good
 namespace TheGodhunter.Tiles
 {
     public class AstraliteTileBlock : ModTile

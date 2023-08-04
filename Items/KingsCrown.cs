@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
+//Most useless item never created by mankind, and I'm the one behind it, it has no purpose, and I don't even know what to do about it
 namespace TheGodhunter.Items
 {
     public class KingsCrown : ModItem

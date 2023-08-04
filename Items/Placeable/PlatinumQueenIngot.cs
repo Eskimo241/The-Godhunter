@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
+//I think there is potential to do something, but don't know what 
 namespace TheGodhunter.Items.Placeable
 {
     public class PlatinumQueenIngot : ModItem

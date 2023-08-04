@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
+//Actually never used, I have no idea why it is stil there
 namespace TheGodhunter.Items.Ammo
 {
 	class BombFishRocket : ModItem

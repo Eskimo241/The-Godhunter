@@ -1,14 +1,17 @@
-A little mod for now, in the not so near future there will be story and cool bosses
-(It is missing a lot of textures, for the moment nothing I draw satisfy me)
-You may expect an update soon just for the textures
-
-Changelog:
-
--Finally ported the mod to 1.4
--Coded back ZWE from scratch (lots of blanck textures for BossChecklist)
+A little mod for now, in the not so near future there will be story and (maybe) cool bosses.
 
 
 
-you can contact me with discord: Eskimo#7778
+Major Changes:
+
+-Finally ported the mod to 1.4.4
+-Added not two, but ONE weapon with unique AI !
+-I SWEAR I DID SOME THINGS!!
+-Due to libraries not porting to 1.4.4, the only boss is hitboxless
 
 
+
+you can contact me on discord: nilhorion
+
+
+ 

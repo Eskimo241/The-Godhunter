@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using TheGodhunter.Projectiles;
-
+//Oh dear god, why did I made such an awful looking weapon, I think the concept is cool, but I don't have the skills to do it properly yet
 namespace TheGodhunter.Items.Weapons.Ranged
 {
     public class Sharkanon : ModItem

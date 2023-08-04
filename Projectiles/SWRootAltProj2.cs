@@ -10,80 +10,82 @@ using Terraria.Localization;
 
 namespace TheGodhunter.Projectiles
 {
-    public class SWRootAltProj2 : ModProjectile
+    public class SWRootAltProj2 : ModProjectile //Second Proj = Radiant Beam
     {
-       // public override string Texture => "TheGodhunter/Projectiles/emptyproj";
-        private float BladeFrame = 0;
-        private float TargetPoint = -1f;
-        private bool colide = false;
+        int newHeight = 0;
 
         
 
         public override void SetDefaults()
         {
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
-            Projectile.width = 1;
-            Projectile.height = 1;
+            Projectile.width = 40;
+            Projectile.height = 2;
             Projectile.friendly = true;
             Projectile.scale = 5f;
             Projectile.hostile = false;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
-            Projectile.damage = 10;
+            Projectile.damage = 100;
             Projectile.penetrate = -1;
             Projectile.alpha = 0;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 4;
-            Projectile.timeLeft = 600;
+            Projectile.localNPCHitCooldown = 2;
+            Projectile.timeLeft = 60*3;
+            Projectile.ai[0] = 0;
         }
 
         public override void AI()
         {
+            Projectile.damage = 100; 
             Player owner = Main.player[Projectile.owner];
             if (!owner.active || owner.dead|| owner.ghost)
             {
                 Projectile.Kill();
                 return;
             }
+            MyPlayer.LockY = -1; //We don't know whether he was still lock ; edit: it should NOT be >1 in here, we could use a bool but fuck it
+            
+            
+            Projectile.ai[0] ++;
 
-            if (TargetPoint == -1)
-            {TargetPoint = owner.position.Y - 300;}
-
-            if (Projectile.position.Y >= TargetPoint && !colide )
+            if ( Projectile.ai[0] < 19) //Fine tuned the timer so it matches perfectly
             {
-                
-                Projectile.velocity += new Vector2 (0,-1);
+                owner.position.Y +=10; //Sadly player.velocity.Y is seems to be capped even though the speed o meter was showing good numbers
             }
-            else
-            {
-                
-                Projectile.velocity = Vector2.Zero;
-                owner.position = Projectile.position - new Vector2(7.5f,1); //You may ask why the new Vector 2. This is to prevent teleporting into tiles, I have no idea why it is doing that. I had to find 7.5 the hard way °-°
-                MyPlayer.oldpos.X = owner.position.X;
-                MyPlayer.oldpos.Y = owner.position.Y ;
-                MyPlayer.LockY = 60;
-                
-                if (colide) {
-                    owner.AddBuff(ModContent.BuffType<OuchDebuff>(), 600);
+            else {
+                //Spawn Shockwave then beam slowly vanishes.
+                // !!NOTE : SHOULD UPDATE HITBOX.WIDTH ACORDINGLY AS IT FADES!!
+                owner.noFallDmg = false;
+
+                if (Projectile.ai[0]==40)
+                {
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), owner.Center, new Vector2 (0,0), ModContent.ProjectileType<SWRootAltProj3>(), 0,0);
                     
-                    owner.Hurt(PlayerDeathReason.ByCustomReason (owner.name+ Language.GetTextValue("Mods.TheGodhunter.DeathReasons.HeadTrauma")), 10, 0, false, false, -1,false ,0 ,0 ,0);
-                    MyPlayer.LockX = MyPlayer.LockY = 0;
                 }
 
+                if (Projectile.ai[0]>=120) Projectile.Kill();
+                
 
-                Projectile.Kill();
-                owner.noFallDmg = false;
             }
+           
         }
 
-
-
-
-        public override bool OnTileCollide(Vector2 oldVelocity)
+        public override void ModifyDamageHitbox(ref Rectangle hitbox)
         {
-            colide = true;
-            return false;
+            //Expand the hitbox to follow the animation
+            if(Projectile.ai[0] < 30)
+            {newHeight = (int)(Projectile.height * (int) Projectile.ai[0] *1.38f +5);}
+
+            hitbox.Height = newHeight;
+            
+            
         }
+
+
+
+
+
 
     }
 }
