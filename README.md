@@ -1,5 +1,5 @@
 # The Godhunter
-Developpement Status : Is Being Worked One
+Developpement Status : Is Being Worked On
 
 I sometimes update this mod   
 **The mod wasn't multiplier proof tested** (and likely never will).
