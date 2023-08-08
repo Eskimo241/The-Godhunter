@@ -87,6 +87,9 @@ Mods: {
 			SWRootAltProj1.DisplayName: SW Root AltProj1
 			SWRootAltProj2.DisplayName: SW Root AltProj2
 			SWRootAltProj3.DisplayName: SW Root AltProj3
+			SWRootProj1.DisplayName: S W Root Proj1
+			SWRootProj2.DisplayName: S W Root Proj2
+			SWRootProj3.DisplayName: S W Root Proj3
 		}
 
 		NPCs.ZWE.DisplayName: Z W E

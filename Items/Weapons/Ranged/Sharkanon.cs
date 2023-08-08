@@ -17,13 +17,13 @@ namespace TheGodhunter.Items.Weapons.Ranged
             Item.DamageType = DamageClass.Ranged;
             Item.width = 64;
             Item.height = 30;
-            Item.useTime = 26;
-            Item.useAnimation = 26;
+            Item.useTime = 1;
+            Item.useAnimation = 1;
             Item.useStyle = 5;
             Item.noMelee = true;
             Item.knockBack = 9;
             Item.rare = 8;
-            Item.UseSound = SoundID.Item11;
+            //Item.UseSound = SoundID.Item11;
             Item.autoReuse = true;
             //item.shoot = 134;
             Item.shootSpeed = 15f;
@@ -81,6 +81,8 @@ namespace TheGodhunter.Items.Weapons.Ranged
             return true;
         }
 
+       
+
 	
 
         public override void HoldItem(Player player)
@@ -121,7 +123,7 @@ namespace TheGodhunter.Items.Weapons.Ranged
             return new Vector2(-44, -5);
         }
 
-        public override void HoldStyle(Player player, Rectangle heldItemFrame)
+       /* public override void HoldStyle(Player player, Rectangle heldItemFrame)
 		{
 			if (player.itemTime > 1)
 				return;
@@ -170,7 +172,7 @@ namespace TheGodhunter.Items.Weapons.Ranged
 			}
 
 			player.itemLocation = finalPosition;
-		}
+		}*/
 
 
     }

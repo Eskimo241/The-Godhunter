@@ -20,7 +20,8 @@ using TheGodhunter.Projectiles;
 namespace TheGodhunter.Items.Weapons
 {
     public class SWRoot: ModItem {
-        private int atkCycle = 0;
+        private int atkCycle = 1;
+        private int offset;
 
         public override void SetStaticDefaults()
         {
@@ -34,8 +35,8 @@ namespace TheGodhunter.Items.Weapons
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.autoReuse = true;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.useTime = 45;
+            Item.useAnimation = 45;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.width = 40;
             Item.height = 40;
@@ -63,8 +64,10 @@ namespace TheGodhunter.Items.Weapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.altFunctionUse == 2 && Math.Abs(player.velocity.Y) < 4 )
+            if (player.altFunctionUse == 2 )
             {
+                if(Math.Abs(player.velocity.Y) < 4)
+                {
                 //Extra condition if in air, gotta find how to check
                 Projectile.NewProjectile(source, player.Center, new Vector2 (0,0), ProjectileType<SWRootAltProj1>(), 0,0, player.whoAmI);
                 player.noFallDmg = true;
@@ -73,19 +76,38 @@ namespace TheGodhunter.Items.Weapons
                 MyPlayer.oldpos.X = player.position.X;
                 MyPlayer.oldpos.Y = player.position.Y;
                 player.GiveImmuneTimeForCollisionAttack( 100);
+                }
 
                 
             }
             else
             {
                 Vector2 ShootVel = Vector2.Normalize(Main.MouseWorld - player.Center);
+
+                if(player.direction == -1) 
+                {
+                    offset = -30;
+                    Main.NewText(player.direction);
+                }
+                else 
+                {
+                    offset = 30;
+                    Main.NewText(player.direction);
+                }
                 switch (atkCycle){
-                    case 0 :
-                        
+                    case 1 :
+                        Projectile.NewProjectile(source, player.Center + new Vector2(offset,-10), new Vector2 (0,0), ProjectileType<SWRootProj1>(),0,0);
+                        break;
+                    case 2:
+                        Projectile.NewProjectile(source, player.Center + new Vector2(offset,-10), new Vector2 (0,0), ProjectileType<SWRootProj2>(),0,0);
+                        break;
+                    case 3:
+                        Projectile.NewProjectile(source, player.Center + new Vector2(offset,0), new Vector2 (0,0), ProjectileType<SWRootProj3>(),0,0);
                         break;
                     
                     
                 }
+                atkCycle = atkCycle%3 +1;
             }
             return false;
         }

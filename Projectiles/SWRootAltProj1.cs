@@ -32,7 +32,7 @@ namespace TheGodhunter.Projectiles
             Projectile.width = 4;
             Projectile.height = 4;
             Projectile.friendly = true;
-            Projectile.scale = 5f;
+            Projectile.scale = 1f;
             Projectile.hostile = false;
             Projectile.tileCollide = true;
             Projectile.ignoreWater = true;
