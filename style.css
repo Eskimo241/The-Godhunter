@@ -1,0 +1,259 @@
+/* Réalisé Bronzin Lubomir T5, et Castelain Nolan T7,  */
+h1
+{
+  font-size: 50px;
+  text-align: center;
+  font-family: ;
+}
+
+
+
+.btn:hover {
+	color: var(--def);
+	transition-delay: .5s;
+}
+
+.btn:hover:before {
+	transition-delay: 0s;
+}
+
+.btn:hover:after {
+	background: var(--inv);
+	transition-delay: .35s;
+}
+
+.topnav {
+  background-color: #5b8687;
+  overflow: hidden;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+.center2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+}
+
+.LogoInst{
+  display: block;
+  width: 5%;
+  position: absolute;
+  top: 1000px;
+  left: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+.LogoTwi{
+  display: block;
+  width: 5%;
+  position: absolute;
+  top: 1008px;
+  left: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+.LogoFac{
+  display: block;
+  width: 4%;
+  position: absolute;
+  top: 1010px;
+  left: 55.25%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+
+
+.LogoTik{
+  display: block;
+  width: 6%;
+  position: absolute;
+  top: 1002px;
+  left: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+
+
+
+
+
+
+.tftable {font-size:24px;color:#FFFFFF;width:100%;border-width: 1px;border-color: #729ea5;border-collapse: collapse;}
+.tftable th {font-size:24px;background-color:#acc8cc;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;text-align:left;}
+.tftable tr {background-color:#d4e3e5;}
+.tftable td {font-size:24px;border-width: 1px;padding: 8px;border-style: solid;border-color: #729ea5;}
+.tftable tr:hover {background-color:#1b17eb;}
+
+.TxtNews {
+  background: #24ed8f;
+  border-color: #095c35;
+}
+.right{
+  display: block;
+  position: absolute;
+  top: 3%;
+  left: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+
+
+
+div{
+  box-sizing: border-box;
+}
+nav{
+  background: #878787;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  color: #fff;
+}
+.nav-links {
+    display: flex;
+    justify-content:space-around;
+    width: 50%;
+    text-transform: uppercase;
+}
+.nav-links a{
+  display: block;
+   text-transform: uppercase;
+   text-decoration: none;
+   color: #c8ff00;
+  border-bottom:2px solid transparent;
+  transition:0.5s ease;
+  transform: translateX(0%);
+}
+.nav-links a:hover{
+  color:#38b8ff;
+  letter-spacing: 5px;
+}
+.burger{
+  display: none;
+}
+.burger div{
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 5px;
+  transition:all 0.5s ease;
+}
+@media only screen and (max-width: 760px){
+   nav{
+    justify-content: space-between;
+    padding: 0 5vw;
+  }
+  .nav-links{
+    position: absolute;
+    right: 0;
+    top:8vh;
+    min-height:92vh;
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    transform: translateX(100%);
+    transition:All 0.5s ease-in;
+  }
+  .nav-links a{
+    opacity: 0;
+ 
+  }
+  .burger{
+    display: block;
+  }
+ 
+}
+
+nav{
+    padding: 0 5vw;
+  }
+
+.nav-active{
+  transform: translateX(0);
+}
+@media only screen and (max-width: 460px){
+  .nav-links{
+    width: 100%;
+    transition:All 0.5s ease;
+  }
+}
+.nav-active{
+  transform: translateX(0);
+}
+@keyframes navLinkFade{
+  from{
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.toggle .line1{
+   transform: rotate(-45deg) translate(-5px,6px );
+}
+.toggle .line2{
+   opacity: 0;
+}
+.toggle .line3{
+   transform: rotate(45deg) translate(-5px,-6px );
+}
+
+img.familygame {
+  width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+img.racketman {
+  width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+img.streamcoupedumonde {
+  width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+h5
+{
+  font-size: 10px;
+  color: black;
+  font-family: Verdana;
+  text-align: center;
+  background-color: white;
+  margin: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
