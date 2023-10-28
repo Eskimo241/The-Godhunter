@@ -17,8 +17,8 @@ namespace TheGodhunter.Items.Weapons.Ranged
         private Vector2 DesiredRot;
         private int frameHeight = 34;
         private int frameCounter = 1;
+        #nullable enable
         private Player? DrawOwner = null;
-
         public override void SetDefaults()
         {
             Item.damage = 48;

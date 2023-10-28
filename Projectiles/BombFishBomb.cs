@@ -28,14 +28,15 @@ namespace TheGodhunter.Projectiles
 			Projectile.timeLeft = 600;
 		}
 
-		/*public override void AI()
+        /*public override void AI()
 		{
 			if (Main.rand.Next(3) == 0)
 				Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height,
 					61, projectile.velocity.X * 0.80f, projectile.velocity.Y * 0.75f);
 		}*/
 
-		public override void Kill (int timeLeft)
+        [System.Obsolete]
+        public override void Kill (int timeLeft)
 		{
 			NPC.SpawnNPC();
 		

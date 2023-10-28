@@ -31,6 +31,7 @@ namespace TheGodhunter
 
 		public static ModKeybind CycleModeHotkey;
 		public static ModKeybind ArmorBonusHotkey;
+		public static bool Debug = false;
 
 		#region Achievements
 		private  string AchievementTex = "TheGodhunter/Textures/Achievements/"; //The Folder for the textures
@@ -48,6 +49,13 @@ namespace TheGodhunter
 			//ModUtils.Load();
 			 ArmorBonusHotkey = KeybindLoader.RegisterKeybind(this, "Armor Bonus Set Action", Keys.K);
 			 CycleModeHotkey = KeybindLoader.RegisterKeybind(this, "Cycle Writer's Mode", Keys.K);
+			if(FileExists("Debug-enable.txt")) 
+            {
+                Debug = true;
+            }
+			else {
+				Console.WriteLine("Nope");
+			}
 
 		}
 
@@ -124,10 +132,10 @@ namespace TheGodhunter
 						"LogBoss",
 						this,
 						//Language.GetText("Mods.TheGodhunter.NPCName.ZWE"),
-						nameof(ZWE),
+						nameof(ZWEHead),
 						1.5f,
 						() => DownedBossSystem.downedZWE,
-						ModContent.NPCType<ZWE>(),
+						ModContent.NPCType<ZWEHead>(),
 						new Dictionary<string, object>()
 						{
 						["spawnItems"] = ModContent.ItemType<AstralGem>(),
@@ -144,7 +152,7 @@ namespace TheGodhunter
 				#region AchievementsCond
 				AchievementsCond[0] = new string[] { "Collect_" + ItemID.RodofDiscord };	//Here we can add our Condition values; Everything is initialize so ItemType<>() will work. May exists better way
 				AchievementsCond[1] = new string[] { "Collect_" + ItemType<AstralGem>().ToString()};
-				AchievementsCond[2] = new string[] {"Kill_" + NPCType<ZWE>()};
+				AchievementsCond[2] = new string[] {"Kill_" + NPCType<ZWEHead>()};
 				#endregion
 				
 				for(int i = 0; i< AchievementsName.Length; i++) TMLachievements.Call("AddAchievement", this, AchievementsName[i], AchievementCategory.Collector, AchievementTex + AchievementsName[i] , null, false, false, 2.5f, AchievementsCond[i]); 	//Making life easier, and code more readable

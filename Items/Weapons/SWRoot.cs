@@ -16,6 +16,7 @@ using Terraria.UI;
 using Terraria.Utilities;
 using Terraria.Localization;
 using TheGodhunter.Projectiles;
+using TheGodhunter.Buffs;
 
 namespace TheGodhunter.Items.Weapons
 {
@@ -64,10 +65,11 @@ namespace TheGodhunter.Items.Weapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.altFunctionUse == 2 )
+            if (player.altFunctionUse == 2  )
             {
-                if(Math.Abs(player.velocity.Y) < 4)
+                if(Math.Abs(player.velocity.Y) < 4 && (!player.HasBuff<UltCoolDown>() || TheGodhunter.Debug))
                 {
+                player.AddBuff(BuffType<UltCoolDown>(),60*10);
                 //Extra condition if in air, gotta find how to check
                 Projectile.NewProjectile(source, player.Center, new Vector2 (0,0), ProjectileType<SWRootAltProj1>(), 0,0, player.whoAmI);
                 player.noFallDmg = true;

@@ -50,13 +50,13 @@ namespace TheGodhunter.Items.Consumable
 
 		public override bool CanUseItem(Player player)
 		{
-			return !NPC.AnyNPCs(ModContent.NPCType<ZWE>());
+			return !NPC.AnyNPCs(ModContent.NPCType<ZWEHead>());
 		}
 
 		public override bool? UseItem(Player player)
 		{
 			//NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<ZWE>());
-			if(!NPC.AnyNPCs(ModContent.NPCType<ZWE>()) && GHWorld.ZWESpawnTimer==0) GHWorld.ZWESpawnTimer=1;
+			if(!NPC.AnyNPCs(ModContent.NPCType<ZWEHead>()) && GHWorld.ZWESpawnTimer==0) GHWorld.ZWESpawnTimer=1;
 			Main.NewText("test "+ ItemType<AstralGem>());
 			//SoundEngine.PlaySound(SoundID.Roar, player.position);
 

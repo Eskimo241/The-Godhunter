@@ -93,7 +93,12 @@ Mods: {
 			SharkanonDrawProj.DisplayName: Sharkanon Draw Proj
 		}
 
-		NPCs.ZWE.DisplayName: Z W E
+		NPCs: {
+			ZWE.DisplayName: Z W E
+			ZWEBody.DisplayName: Z W E Body
+			ZWEHead.DisplayName: Z W E Head
+			ZWETail.DisplayName: Z W E Tail
+		}
 
 		Items: {
 			WaterBoltSummon: {
@@ -241,6 +246,11 @@ Mods: {
 			OuchDebuff: {
 				DisplayName: Ouch
 				Description: Let's not do that again
+			}
+
+			UltCoolDown: {
+				DisplayName: Ult Cool Down
+				Description: Mods.TheGodhunter.Buffs.UltCoolDown.Description
 			}
 		}
 
