@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -11,6 +13,12 @@ namespace TheGodhunter.Items.Weapons.Ranged
     public class Sharkanon : ModItem
     {
         public int charge = 0;
+        private bool AmmoCons = true;
+        private Vector2 DesiredRot;
+        private int frameHeight = 34;
+        private int frameCounter = 1;
+        #nullable enable
+        private Player? DrawOwner = null;
         public override void SetDefaults()
         {
             Item.damage = 48;
@@ -27,10 +35,11 @@ namespace TheGodhunter.Items.Weapons.Ranged
             Item.autoReuse = true;
             //item.shoot = 134;
             Item.shootSpeed = 15f;
-            Item.shoot = ProjectileID.BombFish;
+            Item.shoot = ModContent.ProjectileType<SharkanonDrawProj>(); //NOTE: Maybe sould replace the Original BombFish so it doesn't explodes tiles. idk how to make explosions like that yet
            // item.shoot = mod.ProjectileType("BombFishBomb");
             Item.useAmmo = AmmoID.Rocket;
             Item.channel = true;
+            Item.noUseGraphic = true;
 
         }
 
@@ -41,139 +50,151 @@ namespace TheGodhunter.Items.Weapons.Ranged
  			
         }
 
+        public override bool CanConsumeAmmo(Item ammo, Player player)
+        {
+            //Manually sets when to consume ammo
+            if(AmmoCons) {
+                AmmoCons= false;
+                return true;
+            }
+            return false;
+        }
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-           /* Main.NewText(Language.GetTextValue(source.ToString()),109,36,255);
-            
-            if (charge >99)
-            {Projectile.NewProjectile(source, position, velocity.RotatedBy(0.25f), type, damage, knockback, player.whoAmI, Main.MouseWorld.X);
-            Projectile.NewProjectile(source, position, velocity.RotatedBy(-0.25f), type, damage, knockback, player.whoAmI, Main.MouseWorld.X);
+            //We want to shoot our own way, no need to use this method here
 
-            charge = 0;
-            return true;
-			}*/
+            Projectile.NewProjectile(source, position, new Vector2(0,0), Item.shoot,0,0, player.whoAmI, charge);
+
             return false;
 		}
 
-        public override bool CanUseItem(Player player)
-        {
-            
-            /*if (!player.channel && charge !<=0)
-            {   
-                var velocity = Vector2.Normalize(Main.MouseWorld - player.Center);
-                if(charge <=15)
-                {Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position, velocity, 519,48,1, player.whoAmI, Main.MouseWorld.X);}
-                if(charge >=30)
-                {
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position, velocity.RotatedBy(0.45f), 519,48,1, player.whoAmI, Main.MouseWorld.X);
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position, velocity.RotatedBy(-0.45f), 519,48,1, player.whoAmI, Main.MouseWorld.X);
-                }
-                if (charge >=100)
-                {
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position, velocity.RotatedBy(0.25f), 519,48,1, player.whoAmI, Main.MouseWorld.X);
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position, velocity.RotatedBy(-0.25f), 519,48,1, player.whoAmI, Main.MouseWorld.X);
-                }
-
-                charge = 0;
-                
-            }*/
-            
-            return true;
-        }
-
-       
-
-	
 
         public override void HoldItem(Player player)
         {
+            if(DrawOwner == null) DrawOwner = player;
+            DesiredRot = (Main.MouseWorld-player.Center);
+            int velocity = 20;
+            
             if (player.channel && charge < 100) {
                 charge ++;
+                switch(charge)
+                {
+                    case <15: 
+                    frameCounter =1;
+                    break;
+                    case <100: 
+                    frameCounter = 2;
+                    break;
+                    case 100:
+                    frameCounter = 3;
+                    break;
+                }
             }
-            /*else if(!player.channel && charge >10)
-            {   
-                var velocity = Vector2.Normalize(Main.MouseWorld - player.Center)*50;
-                if(charge <=15)
+            if(!player.channel)
+            {
+                switch(charge) /*So that's easy to understand. I don't want to shoot using the Shoot Method, so it can actually shoot when releasing mousedown. So here we basically do all the 
+                work ourselves. Like also setting when the item can consume ammo, otherwise it would drain hundreds to shoot once.*/
                 {
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position, velocity, 519,48,1, player.whoAmI, Main.MouseWorld.X);
+                    case <15:
+                    charge =0;
+                    break;
+                    case <100:
+                    Projectile.NewProjectile(Item.GetSource_FromThis(), player.Center, DesiredRot.SafeNormalize(Vector2.UnitX)*velocity , ProjectileID.BombFish, 0, 0, player.whoAmI, Main.MouseWorld.X);
+                    charge =0;
+                    AmmoCons= true;
+                    break;
+                    case 100:
+                    AmmoCons= true;
+                    Projectile.NewProjectile(Item.GetSource_FromThis(), player.Center, (DesiredRot.SafeNormalize(Vector2.UnitX)*velocity).RotatedBy(0.25f) , ProjectileID.BombFish, 0, 0, player.whoAmI, Main.MouseWorld.X);
+                    Projectile.NewProjectile(Item.GetSource_FromThis(), player.Center, (DesiredRot.SafeNormalize(Vector2.UnitX)*velocity).RotatedBy(-0.25f) , ProjectileID.BombFish, 0, 0, player.whoAmI, Main.MouseWorld.X);
+                    Projectile.NewProjectile(Item.GetSource_FromThis(), player.Center, DesiredRot.SafeNormalize(Vector2.UnitX)*velocity , ProjectileID.BombFish, 0, 0, player.whoAmI, Main.MouseWorld.X);
+                    charge =0;
+                    break;
                 }
-                if(charge >=30)
-                {
-                    Main.NewText(Language.GetTextValue("test1"),109,36,255);
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position, velocity.RotatedBy(0.45f), 519,48,1, player.whoAmI, Main.MouseWorld.X);
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position, velocity.RotatedBy(-0.45f), 519,48,1, player.whoAmI, Main.MouseWorld.X);
-                }
-                if (charge >=100)
-                {
-                    Main.NewText(Language.GetTextValue("test2"),109,36,255);
-                    Main.NewText(Language.GetTextValue(velocity.Length().ToString()),109,36,255);
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position, velocity.RotatedBy(0.25f), 519,48,1, player.whoAmI, Main.MouseWorld.X);
-                    Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem),player.position, velocity.RotatedBy(-0.25f), 519,48,1, player.whoAmI, Main.MouseWorld.X);
-                }
-
-                charge = 0;
                 
-            }*/
+            }
+
         }
-
-
 
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-44, -5);
         }
 
-       /* public override void HoldStyle(Player player, Rectangle heldItemFrame)
-		{
-			if (player.itemTime > 1)
-				return;
 
-			if (Main.MouseWorld.X > player.Center.X)
-				player.ChangeDir(1);
-			else
-				player.ChangeDir(-1);
-			Vector2 itemPosition = player.MountedCenter + new Vector2(4f * player.direction, -1f * player.gravDir);
-			float rotation = itemPosition.DirectionTo(Main.MouseWorld).ToRotation();
-			player.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, rotation - (player.direction == 1 ? MathHelper.ToRadians(60f) : MathHelper.ToRadians(120f)));
-			player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation - (player.direction == 1 ? MathHelper.ToRadians(120f) : MathHelper.ToRadians(60f)));
-			var itemSize = new Vector2(22);
-			var itemOrigin = new Vector2(-6f, 0f);
-			HoldStyleAdjustments(player, rotation, itemPosition, itemSize, itemOrigin, true, false, true);
-		}
-
-
-
-
-        public void HoldStyleAdjustments(Player player, float desiredRotation, Vector2 desiredPosition, Vector2 spriteSize, Vector2? rotationOriginFromCenter = null, bool noSandstorm = false, bool flipAngle = false, bool stepDisplace = true)
-		{
-		
-
-			if (rotationOriginFromCenter == null)
-				rotationOriginFromCenter = new Vector2?(Vector2.Zero);
-
-			Vector2 origin = rotationOriginFromCenter.Value;
-			origin.X *= player.direction;
-			origin.Y *= player.gravDir;
-			player.itemRotation = desiredRotation;
-
-			if (flipAngle)
-				player.itemRotation *= player.direction;
-			else if (player.direction < 0)
-				player.itemRotation += 3.1415927f;
-
-			Vector2 consistentAnchor = player.itemRotation.ToRotationVector2() * (spriteSize.X / -2f - 10f) * player.direction - origin.RotatedBy(player.itemRotation, default);
-			Vector2 offsetAgain = spriteSize * -0.5f;
-			Vector2 finalPosition = desiredPosition + offsetAgain + consistentAnchor;
-			if (stepDisplace)
-			{
-				int frame = player.bodyFrame.Y / player.bodyFrame.Height;
-				if (frame > 6 && frame < 10 || frame > 13 && frame < 17)
-					finalPosition -= Vector2.UnitY * 2f;
-			}
-
-			player.itemLocation = finalPosition;
-		}*/
 
 
     }
+        public class SharkanonDrawProj : ModProjectile
+        {
+
+            private int frameHeight = 34;
+            private int frameCounter = 1;
+            private Vector2 direction = Vector2.One;
+            private Vector2 DesiredRot;
+            private Player owner => Main.player[Projectile.owner];
+    
+            public override void SetDefaults()
+            {
+                Projectile.width = 1;
+                Projectile.height = 1;
+                Projectile.friendly = true;
+                Projectile.scale = 1f;
+                Projectile.hostile = false;
+                Projectile.tileCollide = true;
+                Projectile.ignoreWater = true;
+                Projectile.penetrate = 1;
+                Projectile.alpha = 0;
+                Projectile.timeLeft = 2;
+            }
+
+            public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+            {
+                overPlayers.Add(index);
+            }
+
+            public override void AI()
+            {
+
+                
+                DesiredRot = (Main.MouseWorld-owner.Center);
+                
+                
+                switch(Projectile.ai[0])
+                {
+                    case <15: 
+                    frameCounter =0;
+                    break;
+                    case <100:
+                    frameCounter = 1;
+                    break;
+                    case 100:
+                    frameCounter = 2;
+                    break;
+                }
+                Main.NewText(frameCounter);
+            }
+
+            public override bool PreDraw(ref Color lightColor)
+            {           
+                Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+                var frame = new Rectangle(0,frameHeight*frameCounter,tex.Width, frameHeight);
+                SpriteEffects effects = SpriteEffects.None;
+                float rot = direction.ToRotation();
+
+
+                if (owner.direction != 1)
+                {
+                    effects = SpriteEffects.FlipVertically;
+                    
+                }
+                Main.spriteBatch.Draw(tex, owner.Center - Main.screenPosition - new Vector2 (0,10)/*.GetFrontHandPosition(Player.CompositeArmStretchAmount.Full, direction.ToRotation()) - Main.screenPosition*/, frame, lightColor, DesiredRot.ToRotation(), new Vector2 (tex.Width/2,frameHeight/2), Projectile.scale, effects,0f);
+                return false;
+            
+            }
+
+    }
+    
 }
+

@@ -24,6 +24,7 @@ namespace TheGodhunter
         internal static int terraCheckpointS = 0;
         public static int ZWESpawnTimer;
 
+
         public override void ClearWorld()/* tModPorter Suggestion: Also override OnWorldUnload, and mirror your worldgen-sensitive data initialization in PreWorldGen */
         {
             downedZWE = false;
@@ -33,7 +34,9 @@ namespace TheGodhunter
             terraCheckpointS = 0;
             ZWESpawnTimer=0;
 
+
         }
+
 
         public override void OnWorldUnload()
         {
@@ -120,7 +123,7 @@ namespace TheGodhunter
         {
             if(ZWESpawnTimer>0)
             {
-                ZWE.UpdateZWESpawning();
+                ZWEHead.UpdateZWESpawning();
             }
         }
     }

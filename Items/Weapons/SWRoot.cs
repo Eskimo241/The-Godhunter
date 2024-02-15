@@ -16,6 +16,7 @@ using Terraria.UI;
 using Terraria.Utilities;
 using Terraria.Localization;
 using TheGodhunter.Projectiles;
+using TheGodhunter.Buffs;
 
 namespace TheGodhunter.Items.Weapons
 {
@@ -86,6 +87,8 @@ namespace TheGodhunter.Items.Weapons
                 Vector2 ShootVel = Vector2.Normalize(Main.MouseWorld - player.Center);
                 offset  = 30;
                 /*if(player.direction == -1) 
+                offset  = 30;
+                /*if(player.direction == -1) 
                 {
                     offset = -30;
                     Main.NewText(player.direction);
@@ -95,14 +98,18 @@ namespace TheGodhunter.Items.Weapons
                     offset = 30;
                     Main.NewText(player.direction);
                 }*/
+                }*/
                 switch (atkCycle){
                     case 1 :
+                        Projectile.NewProjectile(source, player.Center + new Vector2(offset * player.direction,-10), new Vector2 (0,0), ProjectileType<SWRootProj1>(),0,0);
                         Projectile.NewProjectile(source, player.Center + new Vector2(offset * player.direction,-10), new Vector2 (0,0), ProjectileType<SWRootProj1>(),0,0);
                         break;
                     case 2:
                         Projectile.NewProjectile(source, player.Center + new Vector2(offset * player.direction,-10), new Vector2 (0,0), ProjectileType<SWRootProj2>(),0,0);
+                        Projectile.NewProjectile(source, player.Center + new Vector2(offset * player.direction,-10), new Vector2 (0,0), ProjectileType<SWRootProj2>(),0,0);
                         break;
                     case 3:
+                        Projectile.NewProjectile(source, player.Center + new Vector2(offset * player.direction,0), new Vector2 (0,0), ProjectileType<SWRootProj3>(),0,0);
                         Projectile.NewProjectile(source, player.Center + new Vector2(offset * player.direction,0), new Vector2 (0,0), ProjectileType<SWRootProj3>(),0,0);
                         break;
                     
