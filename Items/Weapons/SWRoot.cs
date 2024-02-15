@@ -64,10 +64,11 @@ namespace TheGodhunter.Items.Weapons
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.altFunctionUse == 2 )
+            if (player.altFunctionUse == 2 && !owner.UltCooldown )
             {
-                if(Math.Abs(player.velocity.Y) < 4)
+                if(Math.Abs(player.velocity.Y) < 4 && owner)
                 {
+                owner.AddBuff(ModContent.BuffType<SWUltCooldown>(), 3600 *2);
                 //Extra condition if in air, gotta find how to check
                 Projectile.NewProjectile(source, player.Center, new Vector2 (0,0), ProjectileType<SWRootAltProj1>(), 0,0, player.whoAmI);
                 player.noFallDmg = true;
@@ -83,8 +84,8 @@ namespace TheGodhunter.Items.Weapons
             else
             {
                 Vector2 ShootVel = Vector2.Normalize(Main.MouseWorld - player.Center);
-
-                if(player.direction == -1) 
+                offset  = 30;
+                /*if(player.direction == -1) 
                 {
                     offset = -30;
                     Main.NewText(player.direction);
@@ -93,16 +94,16 @@ namespace TheGodhunter.Items.Weapons
                 {
                     offset = 30;
                     Main.NewText(player.direction);
-                }
+                }*/
                 switch (atkCycle){
                     case 1 :
-                        Projectile.NewProjectile(source, player.Center + new Vector2(offset,-10), new Vector2 (0,0), ProjectileType<SWRootProj1>(),0,0);
+                        Projectile.NewProjectile(source, player.Center + new Vector2(offset * player.direction,-10), new Vector2 (0,0), ProjectileType<SWRootProj1>(),0,0);
                         break;
                     case 2:
-                        Projectile.NewProjectile(source, player.Center + new Vector2(offset,-10), new Vector2 (0,0), ProjectileType<SWRootProj2>(),0,0);
+                        Projectile.NewProjectile(source, player.Center + new Vector2(offset * player.direction,-10), new Vector2 (0,0), ProjectileType<SWRootProj2>(),0,0);
                         break;
                     case 3:
-                        Projectile.NewProjectile(source, player.Center + new Vector2(offset,0), new Vector2 (0,0), ProjectileType<SWRootProj3>(),0,0);
+                        Projectile.NewProjectile(source, player.Center + new Vector2(offset * player.direction,0), new Vector2 (0,0), ProjectileType<SWRootProj3>(),0,0);
                         break;
                     
                     

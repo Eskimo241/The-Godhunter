@@ -18,6 +18,7 @@ namespace TheGodhunter
        
         public bool WaterBoltMinion = false;
         public bool Pet = false;
+        public bool UltCooldown = false;
         public static bool hasProjectile;
 
         public static Vector2 oldpos;
